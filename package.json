@@ -1,7 +1,22 @@
 {
   "name": "zerion-sdk",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "index.js",
+  "description": "A Typed Interface for ZerionAPI",
+  "author": "bh2smith",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bh2smith/zerion-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/bh2smith/zerion-sdk/issues"
+  },
+  "keywords": [
+    "ethereum",
+    "api",
+    "client-sdk",
+    "zerion"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsc",
@@ -13,7 +28,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.13",
-    "@types/node": "^14.0.0",
+    "@types/node": "^22",
     "@typescript-eslint/eslint-plugin": "^8.8.1",
     "@typescript-eslint/parser": "^8.8.1",
     "dotenv": "^16.4.5",
@@ -22,6 +37,6 @@
     "prettier": "^3.3.3",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.0.0",
-    "typescript": "^4.0.0"
+    "typescript": "^5.0.0"
   }
 }
