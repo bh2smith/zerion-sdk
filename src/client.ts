@@ -1,4 +1,3 @@
-import { iZerionAPI } from "./interface";
 import {
   ChainData,
   FungiblePositionsResponse,
@@ -32,7 +31,7 @@ async function fetchFromZerion<T>(
   return data as T;
 }
 
-export class ZerionAPI implements iZerionAPI {
+export class ZerionAPI {
   private apiKey: string;
   env: string | undefined;
 
@@ -41,6 +40,10 @@ export class ZerionAPI implements iZerionAPI {
     this.env = testnet ? "testnet" : undefined;
   }
 
+  /**
+   * Fetches all supported blockchain chains from Zerion.
+   * @returns A promise resolving to an array of chains supported by Zerion.
+   */
   async getChains(): Promise<ChainData[]> {
     const { data } = await fetchFromZerion<GetChainsResponse>(
       "/chains/",
@@ -50,6 +53,13 @@ export class ZerionAPI implements iZerionAPI {
     return data;
   }
 
+  /**
+   * Fetches the portfolio of a specific wallet, partitioned by network.
+   * @param walletAddress The wallet address whose portfolio will be fetched.
+   * @param apiKey The Zerion API key for authorization.
+   * @param currency Optional currency code to get portfolio values (e.g., 'usd').
+   * @returns A promise resolving to the portfolio data for the wallet.
+   */
   async getPortfolio(
     walletAddress: string,
     currency: string = "usd"
@@ -62,6 +72,15 @@ export class ZerionAPI implements iZerionAPI {
     return data;
   }
 
+  /**
+   * Fetches the fungible token positions of a specific wallet.
+   * @param walletAddress The wallet address whose fungible positions will be fetched.
+   * @param currency Optional currency code to get token values (e.g., 'usd').
+   * @param filterPositions Optional filter to include only simple or specific positions.
+   * @param filterTrash Optional filter to exclude positions marked as trash.
+   * @param sort Optional sorting parameter (e.g., 'value').
+   * @returns A promise resolving to the wallet's fungible token positions.
+   */
   async getFungiblePositions(
     walletAddress: string,
     currency: string = "usd",

@@ -20,7 +20,7 @@ export interface PositionAttributes {
   quantity: PositionQuantity;
   value: number | null; // Value might be null
   price: number;
-  // TODO
+  // TODO(bh2smith): not sure about this one yet.
   // changes: null | unknown;
   fungible_info: FungibleInfo;
   flags: PositionFlags;
@@ -29,7 +29,7 @@ export interface PositionAttributes {
 }
 
 export interface PositionQuantity {
-  int: bigint; // Large integer in string format
+  int: string; // Large integer in string format
   decimals: number;
   float: number;
   numeric: string; // Same value as float, but in string format for precision
