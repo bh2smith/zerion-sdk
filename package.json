@@ -1,7 +1,6 @@
 {
   "name": "zerion-sdk",
   "version": "0.0.0",
-  "main": "index.js",
   "description": "A Typed Interface for ZerionAPI",
   "author": "bh2smith",
   "repository": {
@@ -18,9 +17,16 @@
     "zerion"
   ],
   "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "build": "rm -fr dist/* && yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",    
     "dev": "ts-node src/index.ts",
     "lint": "eslint . --ignore-pattern dist/",
     "fmt": "prettier --write '{src,examples,tests}/**/*.{js,jsx,ts,tsx}' && yarn lint --fix",
