@@ -1,7 +1,6 @@
 {
   "name": "zerion-sdk",
   "version": "0.0.0",
-  "main": "index.js",
   "description": "A Typed Interface for ZerionAPI",
   "author": "bh2smith",
   "repository": {
@@ -18,6 +17,12 @@
     "zerion"
   ],
   "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
