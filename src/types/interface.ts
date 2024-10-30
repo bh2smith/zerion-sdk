@@ -2,6 +2,7 @@ import {
   ChainData,
   PortfolioData,
   PositionData,
+  UserBalanceOptions,
   UserDashboardResponse,
 } from ".";
 
@@ -60,5 +61,8 @@ export interface iZerionUI {
    * @param walletAddress The wallet address to fetch balances for
    * @returns A promise resolving to the formatted dashboard response
    */
-  getUserBalances(walletAddress: string): Promise<UserDashboardResponse>;
+  getUserBalances(
+    walletAddress: string,
+    options?: UserBalanceOptions
+  ): Promise<UserDashboardResponse>;
 }

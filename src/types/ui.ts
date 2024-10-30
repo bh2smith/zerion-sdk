@@ -31,3 +31,10 @@ export interface UserTokenMeta {
   contractAddress?: string;
   isSpam: boolean;
 }
+
+export interface UserBalanceOptions {
+  supportedChains?: number[];
+  showZeroNative?: boolean;
+  // USD value to hide as dust.
+  hideDust?: number;
+}

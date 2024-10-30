@@ -8,6 +8,7 @@ import {
   GetPortfolioResponse,
   PortfolioData,
   PositionData,
+  UserBalanceOptions,
   UserDashboardResponse,
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
@@ -70,10 +71,7 @@ export class ZerionUI implements iZerionUI {
 
   async getUserBalances(
     walletAddress: string,
-    options?: {
-      supportedChains?: number[];
-      showZeroNative?: boolean;
-    }
+    options?: UserBalanceOptions
   ): Promise<UserDashboardResponse> {
     const [chains, positions] = await Promise.all([
       this.client.getChains(),

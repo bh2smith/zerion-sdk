@@ -3,6 +3,7 @@ import {
   ChainIcons,
   FungibleTokenData,
   PositionData,
+  UserBalanceOptions,
   UserDashboardResponse,
   UserToken,
 } from "../types";
@@ -14,16 +15,16 @@ interface MinChainData {
   numberId: number;
 }
 
+export interface TransformOptions extends UserBalanceOptions {
+  nativeTokens?: Record<string, FungibleTokenData>;
+}
+
 // Transform position data to user dashboard response
 export function transformPositionDataToUserDashboardResponse(
   positions: PositionData[],
   // This part is only used for chain icons (it is basically static input)
   chains: ChainData[],
-  options?: {
-    supportedChains?: number[]; // Chain numberIds to filter by
-    showZeroNative?: boolean;
-    nativeTokens?: Record<string, FungibleTokenData>;
-  }
+  options?: TransformOptions
 ): UserDashboardResponse {
   // Create a map of chains for O(1) access
   const chainMap = new Map<string, MinChainData>();
@@ -92,6 +93,13 @@ export function transformPositionDataToUserDashboardResponse(
           ...(contractAddress ? { contractAddress } : {}),
         },
       };
+      // Exclude anything with value less than hideDust
+      if (
+        options?.hideDust &&
+        userToken.balances.usdBalance < options.hideDust
+      ) {
+        return null;
+      }
 
       return userToken;
     })
