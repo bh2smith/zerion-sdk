@@ -1,4 +1,5 @@
 import { Links } from "./common";
+import { FungibleImplementation } from "./fungibles";
 
 export interface FungiblePositionsResponse {
   links: Links;
@@ -49,12 +50,6 @@ export interface FungibleIcon {
 
 export interface FungibleFlags {
   verified: boolean;
-}
-
-export interface FungibleImplementation {
-  chain_id: string;
-  address: string | null; // Address could be null
-  decimals: number;
 }
 
 export interface PositionFlags {

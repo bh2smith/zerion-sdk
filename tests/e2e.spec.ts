@@ -32,4 +32,17 @@ describe("Near Safe Requests", () => {
     );
     console.log("Balances", JSON.stringify(balances, null, 2));
   });
+
+  it.only("ui.getUserBalances", async () => {
+    const zerion = new ZerionAPI(apiKey, false);
+    const balances = await zerion.ui.getUserBalances(
+      "0x8d99F8b2710e6A3B94d9bf465A98E5273069aCBd",
+      {
+        supportedChains: [1, 56, 137, 43114],
+        showZeroNative: true,
+        hideDust: 0.0001,
+      }
+    );
+    console.log("Balances", JSON.stringify(balances, null, 2));
+  });
 });

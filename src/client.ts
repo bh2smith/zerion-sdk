@@ -2,10 +2,13 @@ import { iZerionAPI, iZerionUI } from "./types/interface";
 import {
   ChainData,
   FungiblePositionsResponse,
+  FungibleResponse,
+  FungibleTokenData,
   GetChainsResponse,
   GetPortfolioResponse,
   PortfolioData,
   PositionData,
+  UserBalanceOptions,
   UserDashboardResponse,
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
@@ -50,6 +53,13 @@ export class ZerionAPI implements iZerionAPI {
       );
     return data;
   }
+
+  async fungibles(id: string): Promise<FungibleTokenData> {
+    const { data } = await this.service.fetchFromZerion<FungibleResponse>(
+      `/fungibles/${id}`
+    );
+    return data;
+  }
 }
 
 export class ZerionUI implements iZerionUI {
@@ -59,12 +69,44 @@ export class ZerionUI implements iZerionUI {
     this.client = client;
   }
 
-  async getUserBalances(walletAddress: string): Promise<UserDashboardResponse> {
+  async getUserBalances(
+    walletAddress: string,
+    options?: UserBalanceOptions
+  ): Promise<UserDashboardResponse> {
     const [chains, positions] = await Promise.all([
       this.client.getChains(),
       this.client.getFungiblePositions(walletAddress),
     ]);
 
-    return transformPositionDataToUserDashboardResponse(positions, chains);
+    // If showZeroNative, fetch native token info for relevant chains
+    let nativeTokens: Record<string, FungibleResponse["data"]> = {};
+    if (options?.showZeroNative) {
+      const supportedChains = options?.supportedChains;
+      const relevantChains = supportedChains
+        ? chains.filter((chain) =>
+            supportedChains.includes(parseInt(chain.attributes.external_id, 16))
+          )
+        : chains;
+
+      const nativeTokenResponses = await Promise.all(
+        relevantChains.map(async (chain) => {
+          const nativeTokenId = chain.relationships.native_fungible.data.id;
+          const tokenData = await this.client.fungibles(nativeTokenId);
+          return { chainId: chain.id, tokenData };
+        })
+      );
+
+      nativeTokens = Object.fromEntries(
+        nativeTokenResponses.map(({ chainId, tokenData }) => [
+          chainId,
+          tokenData,
+        ])
+      );
+    }
+
+    return transformPositionDataToUserDashboardResponse(positions, chains, {
+      ...options,
+      nativeTokens, // Pass native token data to transform
+    });
   }
 }
