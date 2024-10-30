@@ -21,7 +21,7 @@ export interface PositionAttributes {
   value: number | null; // Value might be null
   price: number;
   // TODO(bh2smith): not sure about this one yet.
-  // changes: null | unknown;
+  changes: null | unknown;
   fungible_info: FungibleInfo;
   flags: PositionFlags;
   updated_at: string; // ISO date string
