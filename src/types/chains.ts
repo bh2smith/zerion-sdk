@@ -23,6 +23,7 @@ export interface Relationships {
 
 // Interface for the chain's attributes
 export interface ChainAttributes {
+  // This is hex representation of chainId (integer)
   external_id: string;
   name: string;
   icon: Icon;
@@ -33,8 +34,7 @@ export interface ChainAttributes {
 
 // Interface for the fungible relationships
 export interface FungibleRelationship {
-  type: string;
-  id: string;
+  data: { type: string; id: string };
   links: Links;
 }
 

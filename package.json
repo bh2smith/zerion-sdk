@@ -26,7 +26,7 @@
   "scripts": {
     "build": "rm -fr dist/* && yarn build:esm && yarn build:cjs",
     "build:esm": "tsc -p tsconfig.esm.json",
-    "build:cjs": "tsc -p tsconfig.cjs.json",    
+    "build:cjs": "tsc -p tsconfig.cjs.json",
     "dev": "ts-node src/index.ts",
     "lint": "eslint . --ignore-pattern dist/",
     "fmt": "prettier --write '{src,examples,tests}/**/*.{js,jsx,ts,tsx}' && yarn lint --fix",
