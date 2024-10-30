@@ -1,6 +1,7 @@
 import {
   ChainData,
   ChainIcons,
+  FungibleTokenData,
   PositionData,
   UserDashboardResponse,
   UserToken,
@@ -20,6 +21,8 @@ export function transformPositionDataToUserDashboardResponse(
   chains: ChainData[],
   options?: {
     supportedChains?: number[]; // Chain numberIds to filter by
+    showZeroNative?: boolean;
+    nativeTokens?: Record<string, FungibleTokenData>;
   }
 ): UserDashboardResponse {
   // Create a map of chains for O(1) access
@@ -43,6 +46,9 @@ export function transformPositionDataToUserDashboardResponse(
   let totalUsdBalance = 0;
   const chainSet = new Set<string>();
   const chainsIcons: ChainIcons = {};
+  // Track which chains have positions
+  const chainsWithPositions = new Set<string>();
+
   const tokens: UserToken[] = positions
     .map((position) => {
       const { attributes, relationships } = position;
@@ -54,6 +60,7 @@ export function transformPositionDataToUserDashboardResponse(
       if (!chain) {
         return null;
       }
+      chainsWithPositions.add(chain.zerionId);
       chainsIcons[chain.name] = chain.icon!;
       chainSet.add(chain.name);
 
@@ -89,6 +96,37 @@ export function transformPositionDataToUserDashboardResponse(
       return userToken;
     })
     .filter((token): token is UserToken => token !== null);
+
+  // Add zero balances for native tokens where needed
+  if (options?.showZeroNative && options.nativeTokens) {
+    for (const [chainId, nativeToken] of Object.entries(options.nativeTokens)) {
+      const chain = chainMap.get(chainId);
+      if (!chain || chainsWithPositions.has(chainId)) continue;
+
+      chainsIcons[chain.name] = chain.icon!;
+      chainSet.add(chain.name);
+
+      tokens.push({
+        chain: {
+          chainId: chain.numberId,
+          chainName: chain.name,
+          ...(chain.icon ? { chainIcon: chain.icon } : {}),
+        },
+        balances: {
+          balance: 0,
+          usdBalance: 0,
+          price: nativeToken.attributes.market_data?.price || 0,
+        },
+        meta: {
+          name: nativeToken.attributes.name,
+          symbol: nativeToken.attributes.symbol,
+          decimals: nativeToken.attributes.implementations[0].decimals,
+          isSpam: false,
+          tokenIcon: nativeToken.attributes.icon?.url,
+        },
+      });
+    }
+  }
 
   return {
     tokens,
