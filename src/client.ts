@@ -2,6 +2,8 @@ import { iZerionAPI, iZerionUI } from "./types/interface";
 import {
   ChainData,
   FungiblePositionsResponse,
+  FungibleResponse,
+  FungibleTokenData,
   GetChainsResponse,
   GetPortfolioResponse,
   PortfolioData,
@@ -48,6 +50,13 @@ export class ZerionAPI implements iZerionAPI {
       await this.service.fetchFromZerion<FungiblePositionsResponse>(
         `/wallets/${walletAddress}/positions/?filter[positions]=${filterPositions}&currency=${currency}&filter[trash]=${filterTrash}&sort=${sort}`
       );
+    return data;
+  }
+
+  async fungibles(id: string): Promise<FungibleTokenData> {
+    const { data } = await this.service.fetchFromZerion<FungibleResponse>(
+      `/fungibles/${id}`
+    );
     return data;
   }
 }
