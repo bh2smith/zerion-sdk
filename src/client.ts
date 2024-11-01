@@ -11,6 +11,8 @@ import {
   UserBalanceOptions,
   UserDashboardResponse,
   FungibleOptions,
+  NFTResponse,
+  NFTPosition,
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
 import { ZerionService } from "./services/zerion";
@@ -58,6 +60,14 @@ export class ZerionAPI implements iZerionAPI {
   async fungibles(id: string): Promise<FungibleTokenData> {
     const { data } = await this.service.fetchFromZerion<FungibleResponse>(
       `/fungibles/${id}`
+    );
+    return data;
+  }
+
+  async fetchNFTs(walletAddress: string): Promise<NFTPosition[]> {
+    const { data } = await this.service.fetchFromZerion<NFTResponse>(
+      // TODO: Add pagination!
+      `/wallets/${walletAddress}/nft-positions/?currency=usd&page[size]=100`
     );
     return data;
   }
