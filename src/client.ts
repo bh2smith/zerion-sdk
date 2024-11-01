@@ -10,14 +10,16 @@ import {
   PositionData,
   UserBalanceOptions,
   UserDashboardResponse,
+  FungibleOptions,
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
 import { ZerionService } from "./services/zerion";
-import { ZERION_CONFIG } from "./config";
+import { DEFAULT_FUNGIBLE_OPTIONS } from "./config";
 import { isBase64, toBase64 } from "./util";
 
 export class ZerionAPI implements iZerionAPI {
   service: ZerionService;
+  readonly isTestnet: boolean;
   readonly ui: iZerionUI;
 
   constructor(apiKey: string, testnet: boolean) {
@@ -25,6 +27,7 @@ export class ZerionAPI implements iZerionAPI {
       isBase64(apiKey) ? apiKey : toBase64(`${apiKey}:`),
       testnet ? "testnet" : undefined
     );
+    this.isTestnet = testnet;
     this.ui = new ZerionUI(this);
   }
 
@@ -46,11 +49,9 @@ export class ZerionAPI implements iZerionAPI {
 
   async getFungiblePositions(
     walletAddress: string,
-    currency: string = ZERION_CONFIG.DEFAULT_CURRENCY,
-    filterPositions: string = ZERION_CONFIG.DEFAULT_FILTER,
-    filterTrash: string = ZERION_CONFIG.DEFAULT_TRASH_FILTER,
-    sort: string = ZERION_CONFIG.DEFAULT_SORT
+    options: FungibleOptions = DEFAULT_FUNGIBLE_OPTIONS
   ): Promise<PositionData[]> {
+    const { filterPositions, filterTrash, sort, currency } = options;
     const { data } =
       await this.service.fetchFromZerion<FungiblePositionsResponse>(
         `/wallets/${walletAddress}/positions/?filter[positions]=${filterPositions}&currency=${currency}&filter[trash]=${filterTrash}&sort=${sort}`
@@ -75,11 +76,26 @@ export class ZerionUI implements iZerionUI {
 
   async getUserBalances(
     walletAddress: string,
-    options?: UserBalanceOptions
+    params?: {
+      fungibleOptions?: FungibleOptions;
+      options?: UserBalanceOptions;
+    }
   ): Promise<UserDashboardResponse> {
+    const { fungibleOptions: preFungibleOptions, options } = params || {};
+    // Many testnet tokens are not returned by the API unless trash filter is disabled.
+    const testnetOverrides =
+      this.client.isTestnet && !preFungibleOptions
+        ? { filterTrash: "no_filter" as const }
+        : {};
+    const fungibleOptions = {
+      ...DEFAULT_FUNGIBLE_OPTIONS,
+      ...preFungibleOptions,
+      ...testnetOverrides,
+    };
+
     const [chains, positions] = await Promise.all([
       this.client.getChains(),
-      this.client.getFungiblePositions(walletAddress),
+      this.client.getFungiblePositions(walletAddress, fungibleOptions),
     ]);
 
     // If showZeroNative, fetch native token info for relevant chains
@@ -108,9 +124,14 @@ export class ZerionUI implements iZerionUI {
       );
     }
 
-    return transformPositionDataToUserDashboardResponse(positions, chains, {
-      ...options,
-      nativeTokens, // Pass native token data to transform
-    });
+    return transformPositionDataToUserDashboardResponse(
+      positions,
+      chains,
+      {
+        ...options,
+        nativeTokens, // Pass native token data to transform
+      },
+      this.client.isTestnet
+    );
   }
 }

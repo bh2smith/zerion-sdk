@@ -24,7 +24,8 @@ export function transformPositionDataToUserDashboardResponse(
   positions: PositionData[],
   // This part is only used for chain icons (it is basically static input)
   chains: ChainData[],
-  options?: TransformOptions
+  options?: TransformOptions,
+  isTestnet?: boolean
 ): UserDashboardResponse {
   // Create a map of chains for O(1) access
   const chainMap = new Map<string, MinChainData>();
@@ -81,8 +82,11 @@ export function transformPositionDataToUserDashboardResponse(
         },
         balances: {
           balance: attributes.quantity.float,
-          usdBalance: attributes.value || 0,
-          ...(attributes.price ? { price: attributes.price } : {}),
+          // Testnet tokens are valueless we assign a fake value of 1.
+          usdBalance: isTestnet
+            ? attributes.quantity.float
+            : attributes.value || 0,
+          price: isTestnet ? 1 : (attributes.price ?? 0),
         },
         meta: {
           name: attributes.fungible_info.name,
