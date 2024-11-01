@@ -1,7 +1,11 @@
+import { FungibleOptions } from "./types";
 export const ZERION_CONFIG = {
   BASE_URL: "https://api.zerion.io/v1",
-  DEFAULT_CURRENCY: "usd",
-  DEFAULT_FILTER: "only_simple",
-  DEFAULT_TRASH_FILTER: "only_non_trash",
-  DEFAULT_SORT: "value",
 } as const;
+
+export const DEFAULT_FUNGIBLE_OPTIONS: FungibleOptions = {
+  currency: "usd",
+  filterPositions: "only_simple",
+  filterTrash: "only_non_trash",
+  sort: "value",
+};
