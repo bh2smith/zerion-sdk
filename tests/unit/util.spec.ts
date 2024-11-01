@@ -26,7 +26,9 @@ describe("toBase64", () => {
   });
 
   it("correctly encodes API key format", () => {
-    expect(toBase64("zk_dev_12345678910:")).toBe("em1kZXZfMTIzNDU2Nzg5MTA6");
+    expect(toBase64("zk_dev_12345678910:")).toBe(
+      "emtfZGV2XzEyMzQ1Njc4OTEwOg=="
+    );
   });
 
   it("handles empty string", () => {
