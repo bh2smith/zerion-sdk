@@ -18,10 +18,9 @@ export class ZerionService {
       // Optionally add the "X-Env" header for testnet or other environments
       ...(this.env ? { "X-Env": this.env } : {}),
     };
-
-    const response = await fetch(`${ZERION_CONFIG.BASE_URL}${endpoint}`, {
-      headers,
-    });
+    const url = `${ZERION_CONFIG.BASE_URL}${endpoint}`;
+    console.log("Request to", url);
+    const response = await fetch(url, { headers });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch ${endpoint}: ${response.statusText}`);

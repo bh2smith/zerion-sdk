@@ -13,10 +13,12 @@ import {
   FungibleOptions,
   NFTResponse,
   NFTPosition,
+  NFTPositionOptions,
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
 import { ZerionService } from "./services/zerion";
 import { DEFAULT_FUNGIBLE_OPTIONS } from "./config";
+import { buildQueryString } from "./util";
 
 export class ZerionAPI implements iZerionAPI {
   service: ZerionService;
@@ -64,10 +66,33 @@ export class ZerionAPI implements iZerionAPI {
     return data;
   }
 
-  async fetchNFTs(walletAddress: string): Promise<NFTPosition[]> {
+  async fetchNFTs(
+    walletAddress: string,
+    options?: NFTPositionOptions
+  ): Promise<NFTPosition[]> {
+    if (this.isTestnet) {
+      console.warn(
+        "This endpoint is not supported for testnet. Returning empty list"
+      );
+      return [];
+    }
+
+    // Base parameters
+    const baseParams = {
+      currency: options?.currency || "usd",
+      "page[size]": options?.pageSize || 100,
+      "filter[chain_ids]": options?.network,
+      "filter[collection]": options?.collection,
+      "filter[category]": options?.category,
+      "filter[status]": options?.status,
+      "page[number]": options?.pageNumber,
+      sort: options?.sort,
+      include: options?.include,
+    };
+
     const { data } = await this.service.fetchFromZerion<NFTResponse>(
       // TODO: Add pagination!
-      `/wallets/${walletAddress}/nft-positions/?currency=usd&page[size]=100`
+      `/wallets/${walletAddress}/nft-positions/?${buildQueryString(baseParams)}`
     );
     return data;
   }
