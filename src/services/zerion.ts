@@ -1,10 +1,14 @@
 import { ZERION_CONFIG } from "../config";
 
 export class ZerionService {
-  constructor(
-    private readonly apiKey: string,
-    private readonly env?: string
-  ) {}
+  private readonly apiKey: string;
+  private readonly env: string | undefined;
+  constructor(apiKey: string, testnet: boolean) {
+    this.apiKey = apiKey.startsWith("zk_")
+      ? Buffer.from(`${apiKey}:`).toString("base64")
+      : apiKey;
+    this.env = testnet ? "testnet" : undefined;
+  }
 
   // Utility function to make API requests with error handling
   async fetchFromZerion<T>(endpoint: string): Promise<T> {
