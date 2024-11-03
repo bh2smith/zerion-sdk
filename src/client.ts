@@ -15,18 +15,14 @@ import {
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
 import { ZerionService } from "./services/zerion";
 import { DEFAULT_FUNGIBLE_OPTIONS } from "./config";
-import { isBase64, toBase64 } from "./util";
 
 export class ZerionAPI implements iZerionAPI {
   service: ZerionService;
   readonly isTestnet: boolean;
   readonly ui: iZerionUI;
 
-  constructor(apiKey: string, testnet: boolean) {
-    this.service = new ZerionService(
-      isBase64(apiKey) ? apiKey : toBase64(`${apiKey}:`),
-      testnet ? "testnet" : undefined
-    );
+  constructor(apiKey: string, testnet: boolean = false) {
+    this.service = new ZerionService(apiKey, testnet);
     this.isTestnet = testnet;
     this.ui = new ZerionUI(this);
   }
