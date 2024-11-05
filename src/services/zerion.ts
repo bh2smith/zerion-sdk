@@ -19,7 +19,6 @@ export class ZerionService {
       ...(this.env ? { "X-Env": this.env } : {}),
     };
     const url = `${ZERION_CONFIG.BASE_URL}${endpoint}`;
-    console.log("Request to", url);
     const response = await fetch(url, { headers });
 
     if (!response.ok) {
