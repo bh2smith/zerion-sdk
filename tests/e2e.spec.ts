@@ -33,18 +33,27 @@ describe("Near Safe Requests", () => {
     console.log("Balances", JSON.stringify(balances, null, 2));
   });
 
-  it.only("ui.getUserBalances", async () => {
-    const zerion = new ZerionAPI(apiKey, true);
+  it.skip("ui.getUserBalances", async () => {
+    const zerion = new ZerionAPI(apiKey, false);
     const balances = await zerion.ui.getUserBalances(
-      "0x8d99F8b2710e6A3B94d9bf465A98E5273069aCBd",
+      "0x54F08c27e75BeA0cdDdb8aA9D69FD61551B19BbA",
       {
         options: {
-          // supportedChains: [1, 56, 137, 43114],
-          showZeroNative: true,
+          supportedChains: [1, 56, 100, 137, 43114],
+          // showZeroNative: true,
           // hideDust: 0.0001,
         },
       }
     );
     console.log("Balances", JSON.stringify(balances, null, 2));
+  });
+
+  it.skip("fetchNFTs", async () => {
+    const zerion = new ZerionAPI(apiKey, false);
+    const balances = await zerion.fetchNFTs(
+      "0x8d99F8b2710e6A3B94d9bf465A98E5273069aCBd",
+      { network: ["polygon"], currency: "cad" }
+    );
+    console.log("NFTS", JSON.stringify(balances[0], null, 2));
   });
 });

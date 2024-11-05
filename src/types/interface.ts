@@ -5,6 +5,7 @@ import {
   UserBalanceOptions,
   UserDashboardResponse,
   FungibleOptions,
+  NFTPosition,
 } from ".";
 
 // Interface for the Zerion API
@@ -39,6 +40,13 @@ export interface iZerionAPI {
     walletAddress: string,
     options?: FungibleOptions
   ): Promise<PositionData[]>;
+
+  /**
+   * Fetches the NFT positions of a specific wallet.
+   * @param walletAddress The wallet address whose NFT positions will be fetched.
+   * @returns A promise resolving to the wallet's NFT positions.
+   */
+  fetchNFTs(walletAddress: string): Promise<NFTPosition[]>;
 }
 
 export interface iZerionUI {
