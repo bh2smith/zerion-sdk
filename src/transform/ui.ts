@@ -2,9 +2,12 @@ import {
   ChainData,
   ChainIcons,
   FungibleTokenData,
+  NFTPosition,
   PositionData,
   UserBalanceOptions,
   UserDashboardResponse,
+  UserNft,
+  UserNftsResponse,
   UserToken,
 } from "../types";
 
@@ -144,6 +147,71 @@ export function transformPositionDataToUserDashboardResponse(
     tokens,
     totalUsdBalance,
     chains: Array.from(chainSet),
+    chainsIcons,
+  };
+}
+
+// Transform NFT data to user NFTs response
+export function transformNftDataToUserNftResponse(
+  positions: NFTPosition[],
+  // This part is only used for chain icons (it is basically static input)
+  chains: ChainData[],
+  options?: TransformOptions
+): UserNftsResponse {
+  const chainsMap = (() => {
+    const m: Map<string, { name: string; icon: string; numericId: number }> =
+      new Map();
+    chains.forEach((c) => {
+      const numericId = parseInt(c.attributes.external_id, 16);
+      if (
+        !options?.supportedChains?.length ||
+        options.supportedChains.includes(numericId)
+      )
+        m.set(c.id, {
+          name: c.attributes.name,
+          icon: c.attributes.icon.url,
+          numericId,
+        });
+    });
+    return m;
+  })();
+
+  const chainsSet: Set<string> = new Set();
+  const chainsIcons: Record<string, string> = {};
+
+  const nfts: UserNft[] = positions.map((nft) => {
+    const { detail, preview, video } = nft.attributes.nft_info.content;
+    const media = detail?.url || preview?.url || video?.url || null;
+
+    const chain = chainsMap.get(nft.relationships.chain.data.id)!;
+    chainsSet.add(chain.name);
+    chainsIcons[chain.name] = chain.icon;
+
+    return {
+      nft_contract_id: nft.attributes.nft_info.contract_address,
+      token_id: nft.attributes.nft_info.token_id,
+      minter: null,
+      owner: null,
+      base_uri: null,
+      metadata_id: null,
+      title: nft.attributes.nft_info.name,
+      description: null,
+      media,
+      reference: null,
+      reference_blob: null,
+      minted_timestamp: null,
+      last_transfer_timestamp: null,
+      price: nft.attributes.price?.toString() || null,
+      currency: null,
+      chain: chain.name,
+      chain_id: chain.numericId,
+    };
+  });
+
+  return {
+    nfts,
+    totalNfts: nfts.length,
+    chains: Array.from(chainsSet),
     chainsIcons,
   };
 }
