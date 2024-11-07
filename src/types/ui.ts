@@ -5,6 +5,32 @@ export type UserDashboardResponse = {
   chainsIcons: ChainIcons;
 };
 
+export type UserNftsResponse = {
+  nfts: UserNft[];
+  totalNfts: number;
+  chains: string[];
+  chainsIcons: ChainIcons;
+};
+
+export type UserNft = {
+  nft_contract_id: string;
+  token_id: string;
+  minter: string | null;
+  owner: string | null;
+  base_uri: string | null;
+  metadata_id: string | null;
+  title: string;
+  description: string | null;
+  media: string | null;
+  reference: string | null;
+  reference_blob: Record<string, unknown> | null;
+  minted_timestamp: string | null;
+  last_transfer_timestamp: string | null;
+  price: string | null;
+  currency: string | null;
+  chain: string | null;
+};
+
 export type ChainIcons = { [key: string]: string };
 
 export type UserToken = {
