@@ -158,14 +158,20 @@ export function transformNftDataToUserNftResponse(
   chains: ChainData[],
   options?: TransformOptions
 ): UserNftsResponse {
-  const chainsMap: Map<string, { name: string; icon: string }> = (() => {
-    const m = new Map();
+  const chainsMap = (() => {
+    const m: Map<string, { name: string; icon: string; numericId: number }> =
+      new Map();
     chains.forEach((c) => {
+      const numericId = parseInt(c.attributes.external_id, 16);
       if (
         !options?.supportedChains?.length ||
-        options.supportedChains.includes(parseInt(c.attributes.external_id, 16))
+        options.supportedChains.includes(numericId)
       )
-        m.set(c.id, { name: c.attributes.name, icon: c.attributes.icon.url });
+        m.set(c.id, {
+          name: c.attributes.name,
+          icon: c.attributes.icon.url,
+          numericId,
+        });
     });
     return m;
   })();
@@ -198,6 +204,7 @@ export function transformNftDataToUserNftResponse(
       price: nft.attributes.price?.toString() || null,
       currency: null,
       chain: chain.name,
+      chain_id: chain.numericId,
     };
   });
 

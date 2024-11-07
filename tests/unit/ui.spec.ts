@@ -427,6 +427,7 @@ describe("NFT Transformations", () => {
         price: "9.143193239999999",
         currency: null,
         chain: "Ethereum",
+        chain_id: 1,
       },
       {
         nft_contract_id: "0xee13783d5a85d9ffe196ab3912bff0f30e4e5165",
@@ -446,6 +447,7 @@ describe("NFT Transformations", () => {
         price: "0",
         currency: null,
         chain: "Optimism",
+        chain_id: 10,
       },
     ]);
   });
