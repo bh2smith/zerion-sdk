@@ -158,27 +158,28 @@ export function transformNftDataToUserNftResponse(
   chains: ChainData[],
   options?: TransformOptions
 ): UserNftsResponse {
-  const chainsSet: Set<string> = new Set();
-  const chainIconsMap: Map<string, string> = (() => {
+  const chainsMap: Map<string, { name: string; icon: string }> = (() => {
     const m = new Map();
     chains.forEach((c) => {
       if (
         !options?.supportedChains?.length ||
         options.supportedChains.includes(parseInt(c.attributes.external_id, 16))
       )
-        m.set(c.id, c.attributes.icon);
+        m.set(c.id, { name: c.attributes.name, icon: c.attributes.icon.url });
     });
     return m;
   })();
+
+  const chainsSet: Set<string> = new Set();
   const chainsIcons: Record<string, string> = {};
 
   const nfts: UserNft[] = positions.map((nft) => {
     const { detail, preview, video } = nft.attributes.nft_info.content;
     const media = detail?.url || preview?.url || video?.url || null;
 
-    const chain = nft.relationships.chain.data.id;
-    chainsSet.add(chain);
-    chainsIcons[chain] = chainIconsMap.get(chain)!;
+    const chain = chainsMap.get(nft.relationships.chain.data.id)!;
+    chainsSet.add(chain.name);
+    chainsIcons[chain.name] = chain.icon;
 
     return {
       nft_contract_id: nft.attributes.nft_info.contract_address,
@@ -196,7 +197,7 @@ export function transformNftDataToUserNftResponse(
       last_transfer_timestamp: null,
       price: nft.attributes.price?.toString() || null,
       currency: null,
-      chain,
+      chain: chain.name,
     };
   });
 
