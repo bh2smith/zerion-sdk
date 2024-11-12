@@ -1,6 +1,7 @@
 import {
   ChainData,
   ChainIcons,
+  FungibleImplementation,
   FungibleTokenData,
   NFTPosition,
   PositionData,
@@ -73,8 +74,11 @@ export function transformPositionDataToUserDashboardResponse(
       totalUsdBalance += attributes.value || 0;
       // Get chain icon from zerion.getChains.
       const chainIcon = chain.icon;
-      const contractAddress =
-        attributes.fungible_info.implementations[0]?.address;
+      const contractAddress = findImplementation(
+        chain,
+        attributes.fungible_info.implementations
+      )?.address;
+
       const tokenIcon = attributes.fungible_info.icon?.url;
       // Extract balances and token metadata
       const userToken: UserToken = {
@@ -135,7 +139,9 @@ export function transformPositionDataToUserDashboardResponse(
         meta: {
           name: nativeToken.attributes.name,
           symbol: nativeToken.attributes.symbol,
-          decimals: nativeToken.attributes.implementations[0].decimals,
+          decimals:
+            findImplementation(chain, nativeToken.attributes.implementations)
+              ?.decimals || 18,
           isSpam: false,
           tokenIcon: nativeToken.attributes.icon?.url,
         },
@@ -214,4 +220,11 @@ export function transformNftDataToUserNftResponse(
     chains: Array.from(chainsSet),
     chainsIcons,
   };
+}
+
+function findImplementation(
+  chain: MinChainData,
+  implementations: FungibleImplementation[]
+): FungibleImplementation | undefined {
+  return implementations.find((impl) => impl.chain_id === chain.zerionId);
 }

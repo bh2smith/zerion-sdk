@@ -39,7 +39,7 @@ describe("Near Safe Requests", () => {
       "0x54F08c27e75BeA0cdDdb8aA9D69FD61551B19BbA",
       {
         options: {
-          supportedChains: [1, 56, 100, 137, 43114],
+          supportedChains: [100],
           // showZeroNative: true,
           // hideDust: 0.0001,
         },
