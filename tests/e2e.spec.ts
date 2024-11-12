@@ -33,7 +33,7 @@ describe("Near Safe Requests", () => {
     console.log("Balances", JSON.stringify(balances, null, 2));
   });
 
-  it.only("ui.getUserBalances", async () => {
+  it.skip("ui.getUserBalances", async () => {
     const zerion = new ZerionAPI(apiKey, false);
     const balances = await zerion.ui.getUserBalances(
       "0x54F08c27e75BeA0cdDdb8aA9D69FD61551B19BbA",
