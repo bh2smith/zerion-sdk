@@ -16,7 +16,7 @@ import {
   NFTPositionOptions,
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
-import { ZerionService } from "./services/zerion";
+import { CHAINS, ZerionService } from "./services/zerion";
 import { DEFAULT_FUNGIBLE_OPTIONS } from "./config";
 import { buildQueryString } from "./util";
 
@@ -32,9 +32,7 @@ export class ZerionAPI implements iZerionAPI {
   }
 
   async getChains(): Promise<ChainData[]> {
-    const { data } =
-      await this.service.fetchFromZerion<GetChainsResponse>("/chains/");
-    return data;
+    return CHAINS;
   }
 
   async getPortfolio(

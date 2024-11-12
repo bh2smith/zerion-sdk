@@ -1,4 +1,9 @@
 import { ZERION_CONFIG } from "../config";
+import chainData from "../../data/chains.json";
+import { ChainData } from "../types";
+
+// A lot of ceremony, but better than dumping that whole file here.
+export const CHAINS: ChainData[] = chainData as unknown as ChainData[];
 
 export class ZerionService {
   private readonly apiKey: string;
