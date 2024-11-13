@@ -104,17 +104,19 @@ export class ZerionAPI implements iZerionAPI {
     return data;
   }
 
-  async getNativeTokens(params?: {
-    useStatic?: boolean;
-    supportedChains?: number[];
-  }): Promise<Record<string, FungibleTokenData>> {
+  async getNativeTokens(
+    chains: ChainData[],
+    params?: {
+      useStatic?: boolean;
+      supportedChains?: number[];
+    }
+  ): Promise<Record<string, FungibleTokenData>> {
     const supportedChains = params?.supportedChains;
 
     if (params?.useStatic && !supportedChains) {
       return STATIC_NATIVE_TOKENS;
     }
 
-    const chains = await this.getChains(params?.useStatic);
     const relevantChains = supportedChains
       ? chains.filter((chain) =>
           supportedChains.includes(parseInt(chain.attributes.external_id, 16))
@@ -178,7 +180,7 @@ export class ZerionUI implements iZerionUI {
     ]);
 
     const nativeTokens = options?.showZeroNative
-      ? await this.client.getNativeTokens({
+      ? await this.client.getNativeTokens(chains, {
           ...(params?.useStatic ? { useStatic: params?.useStatic } : {}),
           ...(options.supportedChains
             ? { supportedChains: options?.supportedChains }

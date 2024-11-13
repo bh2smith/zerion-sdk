@@ -51,13 +51,17 @@ export interface iZerionAPI {
 
   /**
    * Fetches native token data.
+   * @param chains Chain data obtained from ZerionAPI.getChains
    * @param params Optional restriction to static data and selected chains.
    * @returns A promise resolving to a lookup for native assets by chain ID.
    */
-  getNativeTokens(params?: {
-    useStatic?: boolean;
-    supportedChains?: number[];
-  }): Promise<Record<string, FungibleTokenData>>;
+  getNativeTokens(
+    chains: ChainData[],
+    params?: {
+      useStatic?: boolean;
+      supportedChains?: number[];
+    }
+  ): Promise<Record<string, FungibleTokenData>>;
 }
 
 export interface iZerionUI {
