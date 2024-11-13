@@ -7,6 +7,7 @@ import {
   FungibleOptions,
   NFTPosition,
   FungibleTokenData,
+  NFTPositionOptions,
 } from ".";
 
 // Interface for the Zerion API
@@ -46,9 +47,13 @@ export interface iZerionAPI {
   /**
    * Fetches the NFT positions of a specific wallet.
    * @param walletAddress The wallet address whose NFT positions will be fetched.
+   * @param options Optional options for the request.
    * @returns A promise resolving to the wallet's NFT positions.
    */
-  fetchNFTs(walletAddress: string): Promise<NFTPosition[]>;
+  fetchNFTs(
+    walletAddress: string,
+    options?: NFTPositionOptions
+  ): Promise<NFTPosition[]>;
 
   /**
    * Fetches native token data.
@@ -67,6 +72,10 @@ export interface iZerionUI {
    * Fetches and transforms a wallet's balances into a dashboard-friendly format.
    * Includes chain information, token balances, and USD values.
    * @param walletAddress The wallet address to fetch balances for
+   * @param params Optional configuration parameters
+   * @param params.fungibleOptions Options for fungible token fetching
+   * @param params.options Options for balance formatting and filtering
+   * @param params.useStatic If true, uses static data instead of fetching from API
    * @returns A promise resolving to the formatted dashboard response
    */
   getUserBalances(
@@ -74,6 +83,7 @@ export interface iZerionUI {
     params?: {
       fungibleOptions?: FungibleOptions;
       options?: UserBalanceOptions;
+      useStatic?: boolean;
     }
   ): Promise<UserDashboardResponse>;
 }
