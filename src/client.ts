@@ -106,33 +106,15 @@ export class ZerionAPI implements iZerionAPI {
 
   async getNativeTokens(
     chains: ChainData[],
-    params?: {
-      useStatic?: boolean;
-      supportedChains?: number[];
-    }
+    useStatic?: boolean
   ): Promise<Record<string, FungibleTokenData>> {
-    const supportedChains = params?.supportedChains;
-
-    if (params?.useStatic && !supportedChains) {
-      return STATIC_NATIVE_TOKENS;
-    }
-
-    const relevantChains = supportedChains
-      ? chains.filter((chain) =>
-          supportedChains.includes(parseInt(chain.attributes.external_id, 16))
-        )
-      : chains;
-
-    if (params?.useStatic)
+    if (useStatic)
       return Object.fromEntries(
-        relevantChains.map((chain) => [
-          chain.id,
-          STATIC_NATIVE_TOKENS[chain.id],
-        ])
+        chains.map((chain) => [chain.id, STATIC_NATIVE_TOKENS[chain.id]])
       );
 
     const nativeTokenResponses = await Promise.all(
-      relevantChains.map(async (chain) => {
+      chains.map(async (chain) => {
         const nativeTokenId = chain.relationships.native_fungible.data.id;
         const tokenData = await this.fungibles(nativeTokenId);
         return { chainId: chain.id, tokenData };
@@ -180,12 +162,18 @@ export class ZerionUI implements iZerionUI {
     ]);
 
     const nativeTokens = options?.showZeroNative
-      ? await this.client.getNativeTokens(chains, {
-          ...(params?.useStatic ? { useStatic: params?.useStatic } : {}),
-          ...(options.supportedChains
-            ? { supportedChains: options?.supportedChains }
-            : {}),
-        })
+      ? await (async () => {
+          const supportedChains = options?.supportedChains;
+          const relevantChains = supportedChains
+            ? chains.filter((chain) =>
+                supportedChains.includes(
+                  parseInt(chain.attributes.external_id, 16)
+                )
+              )
+            : chains;
+
+          return this.client.getNativeTokens(relevantChains, params?.useStatic);
+        })()
       : {};
 
     return transformPositionDataToUserDashboardResponse(
