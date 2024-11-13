@@ -6,6 +6,7 @@ import {
   UserDashboardResponse,
   FungibleOptions,
   NFTPosition,
+  FungibleTokenData,
 } from ".";
 
 // Interface for the Zerion API
@@ -47,6 +48,16 @@ export interface iZerionAPI {
    * @returns A promise resolving to the wallet's NFT positions.
    */
   fetchNFTs(walletAddress: string): Promise<NFTPosition[]>;
+
+  /**
+   * Fetches native token data.
+   * @param params Optional restriction to static data and selected chains.
+   * @returns A promise resolving to a lookup for native assets by chain ID.
+   */
+  getNativeTokens(params?: {
+    useStatic?: boolean;
+    supportedChains?: number[];
+  }): Promise<Record<string, FungibleTokenData>>;
 }
 
 export interface iZerionUI {
