@@ -15,7 +15,7 @@ import {
   NFTPositionOptions,
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
-import { CHAINS, ZerionService } from "./services/zerion";
+import { CHAINS, NATIVE_TOKENS, ZerionService } from "./services/zerion";
 import { DEFAULT_FUNGIBLE_OPTIONS } from "./config";
 import { buildQueryString } from "./util";
 
@@ -126,38 +126,12 @@ export class ZerionUI implements iZerionUI {
       this.client.getFungiblePositions(walletAddress, fungibleOptions),
     ]);
 
-    // If showZeroNative, fetch native token info for relevant chains
-    let nativeTokens: Record<string, FungibleResponse["data"]> = {};
-    if (options?.showZeroNative) {
-      const supportedChains = options?.supportedChains;
-      const relevantChains = supportedChains
-        ? chains.filter((chain) =>
-            supportedChains.includes(parseInt(chain.attributes.external_id, 16))
-          )
-        : chains;
-
-      const nativeTokenResponses = await Promise.all(
-        relevantChains.map(async (chain) => {
-          const nativeTokenId = chain.relationships.native_fungible.data.id;
-          const tokenData = await this.client.fungibles(nativeTokenId);
-          return { chainId: chain.id, tokenData };
-        })
-      );
-
-      nativeTokens = Object.fromEntries(
-        nativeTokenResponses.map(({ chainId, tokenData }) => [
-          chainId,
-          tokenData,
-        ])
-      );
-    }
-
     return transformPositionDataToUserDashboardResponse(
       positions,
       chains,
       {
         ...options,
-        nativeTokens, // Pass native token data to transform
+        nativeTokens: options?.showZeroNative ? NATIVE_TOKENS : {}, // Pass native token data to transform
       },
       this.client.isTestnet
     );
