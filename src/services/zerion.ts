@@ -4,8 +4,8 @@ import nativeTokens from "../../data/native-tokens.json";
 import { ChainData, FungibleTokenData } from "../types";
 
 // A lot of ceremony, but better than dumping that whole file here.
-export const CHAINS: ChainData[] = chainData as unknown as ChainData[];
-export const NATIVE_TOKENS: Record<string, FungibleTokenData> =
+export const STATIC_CHAINS: ChainData[] = chainData as unknown as ChainData[];
+export const STATIC_NATIVE_TOKENS: Record<string, FungibleTokenData> =
   nativeTokens as unknown as Record<string, FungibleTokenData>;
 
 export class ZerionService {

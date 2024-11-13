@@ -13,9 +13,14 @@ import {
   NFTResponse,
   NFTPosition,
   NFTPositionOptions,
+  GetChainsResponse,
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
-import { CHAINS, NATIVE_TOKENS, ZerionService } from "./services/zerion";
+import {
+  STATIC_CHAINS,
+  STATIC_NATIVE_TOKENS,
+  ZerionService,
+} from "./services/zerion";
 import { DEFAULT_FUNGIBLE_OPTIONS } from "./config";
 import { buildQueryString } from "./util";
 
@@ -30,8 +35,13 @@ export class ZerionAPI implements iZerionAPI {
     this.ui = new ZerionUI(this);
   }
 
-  async getChains(): Promise<ChainData[]> {
-    return CHAINS;
+  async getChains(useStatic?: boolean): Promise<ChainData[]> {
+    if (useStatic) {
+      return STATIC_CHAINS;
+    }
+    const { data } =
+      await this.service.fetchFromZerion<GetChainsResponse>("/chains/");
+    return data;
   }
 
   async getPortfolio(
@@ -93,6 +103,46 @@ export class ZerionAPI implements iZerionAPI {
     );
     return data;
   }
+
+  async getNativeTokens(params?: {
+    useStatic?: boolean;
+    supportedChains?: number[];
+  }): Promise<Record<string, FungibleTokenData>> {
+    const supportedChains = params?.supportedChains;
+
+    if (params?.useStatic && !supportedChains) {
+      return STATIC_NATIVE_TOKENS;
+    }
+
+    const chains = await this.getChains(params?.useStatic);
+    const relevantChains = supportedChains
+      ? chains.filter((chain) =>
+          supportedChains.includes(parseInt(chain.attributes.external_id, 16))
+        )
+      : chains;
+
+    if (params?.useStatic)
+      return Object.fromEntries(
+        relevantChains.map((chain) => [
+          chain.id,
+          STATIC_NATIVE_TOKENS[chain.id],
+        ])
+      );
+
+    const nativeTokenResponses = await Promise.all(
+      relevantChains.map(async (chain) => {
+        const nativeTokenId = chain.relationships.native_fungible.data.id;
+        const tokenData = await this.fungibles(nativeTokenId);
+        return { chainId: chain.id, tokenData };
+      })
+    );
+
+    const nativeTokens = Object.fromEntries(
+      nativeTokenResponses.map(({ chainId, tokenData }) => [chainId, tokenData])
+    );
+
+    return nativeTokens;
+  }
 }
 
 export class ZerionUI implements iZerionUI {
@@ -107,6 +157,7 @@ export class ZerionUI implements iZerionUI {
     params?: {
       fungibleOptions?: FungibleOptions;
       options?: UserBalanceOptions;
+      useStatic?: boolean;
     }
   ): Promise<UserDashboardResponse> {
     const { fungibleOptions: preFungibleOptions, options } = params || {};
@@ -122,16 +173,25 @@ export class ZerionUI implements iZerionUI {
     };
 
     const [chains, positions] = await Promise.all([
-      this.client.getChains(),
+      this.client.getChains(params?.useStatic),
       this.client.getFungiblePositions(walletAddress, fungibleOptions),
     ]);
+
+    const nativeTokens = options?.showZeroNative
+      ? await this.client.getNativeTokens({
+          ...(params?.useStatic ? { useStatic: params?.useStatic } : {}),
+          ...(options.supportedChains
+            ? { supportedChains: options?.supportedChains }
+            : {}),
+        })
+      : {};
 
     return transformPositionDataToUserDashboardResponse(
       positions,
       chains,
       {
         ...options,
-        nativeTokens: options?.showZeroNative ? NATIVE_TOKENS : {}, // Pass native token data to transform
+        nativeTokens, // Pass native token data to transform
       },
       this.client.isTestnet
     );
