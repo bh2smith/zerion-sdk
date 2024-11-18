@@ -1,5 +1,5 @@
 import { writeFile } from "fs/promises";
-import { ZerionAPI } from "./src/client";
+import { ZerionAPI } from "../src/client";
 
 const ZERION_API_KEY = process.env.ZERION_API_KEY;
 if (!ZERION_API_KEY)
@@ -18,7 +18,7 @@ async function main(): Promise<void> {
   const mainnetZerion = new ZerionAPI(ZERION_API_KEY!, false);
   const mainnetChains = await mainnetZerion.getChains();
   const mainnetNativeTokens =
-    await mainnetZerion.getNativeTokens(testnetChains);
+    await mainnetZerion.getNativeTokens(mainnetChains);
 
   await Promise.all([
     write(testnetChains, "testnet-chains"),
