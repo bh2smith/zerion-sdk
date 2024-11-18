@@ -1,12 +1,19 @@
 import { ZERION_CONFIG } from "../config";
-import chainData from "../../data/chains.json";
-import nativeTokens from "../../data/native-tokens.json";
+import mainnetChainData from "../../data/mainnet-chains.json";
+import mainnetNativeTokens from "../../data/mainnet-native-tokens.json";
+import testnetChainData from "../../data/testnet-chains.json";
+import testnetNativeTokens from "../../data/testnet-native-tokens.json";
 import { ChainData, FungibleTokenData } from "../types";
 
 // A lot of ceremony, but better than dumping that whole file here.
-export const STATIC_CHAINS: ChainData[] = chainData as unknown as ChainData[];
-export const STATIC_NATIVE_TOKENS: Record<string, FungibleTokenData> =
-  nativeTokens as unknown as Record<string, FungibleTokenData>;
+export const STATIC_CHAINS_MAINNET: ChainData[] =
+  mainnetChainData as unknown as ChainData[];
+export const STATIC_NATIVE_TOKENS_MAINNET: Record<string, FungibleTokenData> =
+  mainnetNativeTokens as unknown as Record<string, FungibleTokenData>;
+export const STATIC_CHAINS_TESTNET: ChainData[] =
+  testnetChainData as unknown as ChainData[];
+export const STATIC_NATIVE_TOKENS_TESTNET: Record<string, FungibleTokenData> =
+  testnetNativeTokens as unknown as Record<string, FungibleTokenData>;
 
 export class ZerionService {
   private readonly apiKey: string;

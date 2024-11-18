@@ -15,7 +15,9 @@
         "home_url": "https://arbiscan.io"
       },
       "rpc": {
-        "public_servers_url": ["https://arb1.arbitrum.io/rpc"]
+        "public_servers_url": [
+          "https://arb1.arbitrum.io/rpc"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -175,7 +177,9 @@
         "home_url": "https://blastscan.io"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.blast.io/"]
+        "public_servers_url": [
+          "https://rpc.blast.io/"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -223,7 +227,9 @@
         "home_url": "https://astar-zkevm.explorer.startale.com"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.startale.com/astar-zkevm"]
+        "public_servers_url": [
+          "https://rpc.startale.com/astar-zkevm"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -262,7 +268,9 @@
         "home_url": "https://snowscan.xyz"
       },
       "rpc": {
-        "public_servers_url": ["https://api.avax.network/ext/bc/C/rpc"]
+        "public_servers_url": [
+          "https://api.avax.network/ext/bc/C/rpc"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -359,7 +367,10 @@
         "home_url": "https://explorer.gobob.xyz"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.gobob.xyz", "wss://rpc.gobob.xyz"]
+        "public_servers_url": [
+          "https://rpc.gobob.xyz",
+          "wss://rpc.gobob.xyz"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -398,7 +409,9 @@
         "home_url": "https://era.zksync.network"
       },
       "rpc": {
-        "public_servers_url": ["https://mainnet.era.zksync.io"]
+        "public_servers_url": [
+          "https://mainnet.era.zksync.io"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -446,7 +459,9 @@
         "home_url": "https://basescan.org"
       },
       "rpc": {
-        "public_servers_url": ["https://mainnet.base.org"]
+        "public_servers_url": [
+          "https://mainnet.base.org"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -538,7 +553,9 @@
         "home_url": "https://explorer.degen.tips"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.degen.tips"]
+        "public_servers_url": [
+          "https://rpc.degen.tips"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -586,7 +603,9 @@
         "home_url": "https://fraxscan.com"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.frax.com"]
+        "public_servers_url": [
+          "https://rpc.frax.com"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -625,7 +644,9 @@
         "home_url": "https://explorer.gravity.xyz"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.gravity.xyz"]
+        "public_servers_url": [
+          "https://rpc.gravity.xyz"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -673,7 +694,9 @@
         "home_url": "https://blockscout.lisk.com/"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.api.lisk.com"]
+        "public_servers_url": [
+          "https://rpc.api.lisk.com"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -755,7 +778,9 @@
         "home_url": "https://zkevm.polygonscan.com"
       },
       "rpc": {
-        "public_servers_url": ["https://zkevm-rpc.com"]
+        "public_servers_url": [
+          "https://zkevm-rpc.com"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -846,7 +871,9 @@
         "home_url": "https://optimistic.etherscan.io"
       },
       "rpc": {
-        "public_servers_url": ["https://mainnet.optimism.io"]
+        "public_servers_url": [
+          "https://mainnet.optimism.io"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -1087,7 +1114,9 @@
         "home_url": "https://ftmscan.com"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.ftm.tools"]
+        "public_servers_url": [
+          "https://rpc.ftm.tools"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -1135,7 +1164,9 @@
         "home_url": "https://app.roninchain.com"
       },
       "rpc": {
-        "public_servers_url": ["https://api.roninchain.com/rpc"]
+        "public_servers_url": [
+          "https://api.roninchain.com/rpc"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -1174,7 +1205,9 @@
         "home_url": "https://explorer.aurora.dev"
       },
       "rpc": {
-        "public_servers_url": ["https://mainnet.aurora.dev"]
+        "public_servers_url": [
+          "https://mainnet.aurora.dev"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -1316,7 +1349,9 @@
         "home_url": "https://apechain.calderaexplorer.xyz/"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.zerion.io/v1/ape"]
+        "public_servers_url": [
+          "https://rpc.zerion.io/v1/ape"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -1355,7 +1390,9 @@
         "home_url": "https://explorer.zkevm.cronos.org/"
       },
       "rpc": {
-        "public_servers_url": ["https://mainnet.zkevm.cronos.org"]
+        "public_servers_url": [
+          "https://mainnet.zkevm.cronos.org"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -1394,7 +1431,9 @@
         "home_url": "https://polynomialscan.io/"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.polynomial.fi"]
+        "public_servers_url": [
+          "https://rpc.polynomial.fi"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -1433,7 +1472,9 @@
         "home_url": "https://mainnet.explorer.rarichain.org"
       },
       "rpc": {
-        "public_servers_url": ["https://rari.calderachain.xyz/http"]
+        "public_servers_url": [
+          "https://rari.calderachain.xyz/http"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -1567,7 +1608,10 @@
         "home_url": "https://taikoscan.io/"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.taiko.xyz", "wss://ws.taiko.xyz"]
+        "public_servers_url": [
+          "https://rpc.taiko.xyz",
+          "wss://ws.taiko.xyz"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -1606,7 +1650,9 @@
         "home_url": "https://www.vicscan.xyz/"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.viction.xyz"]
+        "public_servers_url": [
+          "https://rpc.viction.xyz"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -1735,18 +1781,20 @@
     "id": "zero",
     "attributes": {
       "external_id": "0x849ea",
-      "name": "ZERΘ",
+      "name": "ZERϴ",
       "icon": {
         "url": "https://chain-icons.s3.amazonaws.com/chainlist/543210"
       },
       "explorer": {
-        "name": "ZERϴ Network Explorer",
+        "name": "ZERϴ Explorer",
         "token_url_format": "https://explorer.zero.network/token/{ADDRESS}",
         "tx_url_format": "https://explorer.zero.network/tx/{HASH}",
         "home_url": "https://explorer.zero.network"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.zerion.io/v1/zero"]
+        "public_servers_url": [
+          "https://rpc.zerion.io/v1/zero"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -1794,7 +1842,10 @@
         "home_url": "https://explorer.re.al"
       },
       "rpc": {
-        "public_servers_url": ["https://real.drpc.org", "wss://real.drpc.org"]
+        "public_servers_url": [
+          "https://real.drpc.org",
+          "wss://real.drpc.org"
+        ]
       },
       "flags": {
         "supports_trading": false,
@@ -1833,7 +1884,9 @@
         "home_url": "https://explorer.zora.energy"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.zora.energy/"]
+        "public_servers_url": [
+          "https://rpc.zora.energy/"
+        ]
       },
       "flags": {
         "supports_trading": true,
@@ -1881,7 +1934,10 @@
         "home_url": "https://explorer.zklink.io"
       },
       "rpc": {
-        "public_servers_url": ["https://rpc.zklink.io", "wss://rpc.zklink.io"]
+        "public_servers_url": [
+          "https://rpc.zklink.io",
+          "wss://rpc.zklink.io"
+        ]
       },
       "flags": {
         "supports_trading": false,

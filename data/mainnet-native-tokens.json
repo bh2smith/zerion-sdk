@@ -1,0 +1,830 @@
+{
+  "ethereum-sepolia": {
+    "type": "fungibles",
+    "id": "eth",
+    "attributes": {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "description": "Ethereum is a global, open-source platform for decentralized applications. In other words, the vision is to create a world computer that anyone can build applications in a decentralized manner; while all states and data are distributed and publicly accessible. Ethereum supports smart contracts in which developers can write code in order to program digital value. Examples of decentralized apps (dapps) built on Ethereum include token, non-fungible tokens, decentralized finance apps, lending protocol, decentralized exchanges, and much more.",
+      "icon": {
+        "url": "https://cdn.zerion.io/eth.png"
+      },
+      "flags": {
+        "verified": true
+      },
+      "external_links": [],
+      "implementations": [
+        {
+          "chain_id": "arbitrum",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "astar-zkevm",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "aurora",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "base",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "blast",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "bob",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "cyber",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "ethereum",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "linea",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "lisk",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "manta-pacific",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "mode",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "optimism",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "polygon-zkevm",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "polynomial",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "rari",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "redstone",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "scroll",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "taiko",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "world",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zklink-nova",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zksync-era",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zora",
+          "address": null,
+          "decimals": 18
+        }
+      ],
+      "market_data": {
+        "total_supply": 122373866.2178,
+        "circulating_supply": 122373866.2178,
+        "market_cap": 376583545989.36035,
+        "fully_diluted_valuation": 376583545989.36035,
+        "price": 3077.32,
+        "changes": {
+          "percent_1d": -1.1728284047992206,
+          "percent_30d": 16.630535300092475,
+          "percent_90d": 16.056525002168524,
+          "percent_365d": 57.660897810293775
+        }
+      }
+    },
+    "relationships": {
+      "chart_day": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/day?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-day"
+        }
+      },
+      "chart_hour": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/hour?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-hour"
+        }
+      },
+      "chart_max": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/max?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-max"
+        }
+      },
+      "chart_month": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/month?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-month"
+        }
+      },
+      "chart_week": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/week?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-week"
+        }
+      },
+      "chart_year": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/year?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-year"
+        }
+      }
+    }
+  },
+  "unichain-sepolia": {
+    "type": "fungibles",
+    "id": "eth",
+    "attributes": {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "description": "Ethereum is a global, open-source platform for decentralized applications. In other words, the vision is to create a world computer that anyone can build applications in a decentralized manner; while all states and data are distributed and publicly accessible. Ethereum supports smart contracts in which developers can write code in order to program digital value. Examples of decentralized apps (dapps) built on Ethereum include token, non-fungible tokens, decentralized finance apps, lending protocol, decentralized exchanges, and much more.",
+      "icon": {
+        "url": "https://cdn.zerion.io/eth.png"
+      },
+      "flags": {
+        "verified": true
+      },
+      "external_links": [],
+      "implementations": [
+        {
+          "chain_id": "arbitrum",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "astar-zkevm",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "aurora",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "base",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "blast",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "bob",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "cyber",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "ethereum",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "linea",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "lisk",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "manta-pacific",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "mode",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "optimism",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "polygon-zkevm",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "polynomial",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "rari",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "redstone",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "scroll",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "taiko",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "world",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zklink-nova",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zksync-era",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zora",
+          "address": null,
+          "decimals": 18
+        }
+      ],
+      "market_data": {
+        "total_supply": 122373866.2178,
+        "circulating_supply": 122373866.2178,
+        "market_cap": 376583545989.36035,
+        "fully_diluted_valuation": 376583545989.36035,
+        "price": 3077.32,
+        "changes": {
+          "percent_1d": -1.1728284047992206,
+          "percent_30d": 16.630535300092475,
+          "percent_90d": 16.056525002168524,
+          "percent_365d": 57.660897810293775
+        }
+      }
+    },
+    "relationships": {
+      "chart_day": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/day?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-day"
+        }
+      },
+      "chart_hour": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/hour?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-hour"
+        }
+      },
+      "chart_max": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/max?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-max"
+        }
+      },
+      "chart_month": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/month?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-month"
+        }
+      },
+      "chart_week": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/week?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-week"
+        }
+      },
+      "chart_year": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/year?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-year"
+        }
+      }
+    }
+  },
+  "zero-sepolia": {
+    "type": "fungibles",
+    "id": "eth",
+    "attributes": {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "description": "Ethereum is a global, open-source platform for decentralized applications. In other words, the vision is to create a world computer that anyone can build applications in a decentralized manner; while all states and data are distributed and publicly accessible. Ethereum supports smart contracts in which developers can write code in order to program digital value. Examples of decentralized apps (dapps) built on Ethereum include token, non-fungible tokens, decentralized finance apps, lending protocol, decentralized exchanges, and much more.",
+      "icon": {
+        "url": "https://cdn.zerion.io/eth.png"
+      },
+      "flags": {
+        "verified": true
+      },
+      "external_links": [],
+      "implementations": [
+        {
+          "chain_id": "arbitrum",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "astar-zkevm",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "aurora",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "base",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "blast",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "bob",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "cyber",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "ethereum",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "linea",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "lisk",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "manta-pacific",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "mode",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "optimism",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "polygon-zkevm",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "polynomial",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "rari",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "redstone",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "scroll",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "taiko",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "world",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zklink-nova",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zksync-era",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zora",
+          "address": null,
+          "decimals": 18
+        }
+      ],
+      "market_data": {
+        "total_supply": 122373866.2178,
+        "circulating_supply": 122373866.2178,
+        "market_cap": 376583545989.36035,
+        "fully_diluted_valuation": 376583545989.36035,
+        "price": 3077.32,
+        "changes": {
+          "percent_1d": -1.1728284047992206,
+          "percent_30d": 16.630535300092475,
+          "percent_90d": 16.056525002168524,
+          "percent_365d": 57.660897810293775
+        }
+      }
+    },
+    "relationships": {
+      "chart_day": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/day?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-day"
+        }
+      },
+      "chart_hour": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/hour?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-hour"
+        }
+      },
+      "chart_max": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/max?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-max"
+        }
+      },
+      "chart_month": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/month?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-month"
+        }
+      },
+      "chart_week": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/week?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-week"
+        }
+      },
+      "chart_year": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/year?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-year"
+        }
+      }
+    }
+  },
+  "zero-sepolia-v2": {
+    "type": "fungibles",
+    "id": "eth",
+    "attributes": {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "description": "Ethereum is a global, open-source platform for decentralized applications. In other words, the vision is to create a world computer that anyone can build applications in a decentralized manner; while all states and data are distributed and publicly accessible. Ethereum supports smart contracts in which developers can write code in order to program digital value. Examples of decentralized apps (dapps) built on Ethereum include token, non-fungible tokens, decentralized finance apps, lending protocol, decentralized exchanges, and much more.",
+      "icon": {
+        "url": "https://cdn.zerion.io/eth.png"
+      },
+      "flags": {
+        "verified": true
+      },
+      "external_links": [],
+      "implementations": [
+        {
+          "chain_id": "arbitrum",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "astar-zkevm",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "aurora",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "base",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "blast",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "bob",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "cyber",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "ethereum",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "linea",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "lisk",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "manta-pacific",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "mode",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "optimism",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "polygon-zkevm",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "polynomial",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "rari",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "redstone",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "scroll",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "taiko",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "world",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zklink-nova",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zksync-era",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zora",
+          "address": null,
+          "decimals": 18
+        }
+      ],
+      "market_data": {
+        "total_supply": 122373866.2178,
+        "circulating_supply": 122373866.2178,
+        "market_cap": 376583545989.36035,
+        "fully_diluted_valuation": 376583545989.36035,
+        "price": 3077.32,
+        "changes": {
+          "percent_1d": -1.1728284047992206,
+          "percent_30d": 16.630535300092475,
+          "percent_90d": 16.056525002168524,
+          "percent_365d": 57.660897810293775
+        }
+      }
+    },
+    "relationships": {
+      "chart_day": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/day?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-day"
+        }
+      },
+      "chart_hour": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/hour?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-hour"
+        }
+      },
+      "chart_max": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/max?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-max"
+        }
+      },
+      "chart_month": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/month?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-month"
+        }
+      },
+      "chart_week": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/week?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-week"
+        }
+      },
+      "chart_year": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/year?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-year"
+        }
+      }
+    }
+  }
+}

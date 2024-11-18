@@ -17,8 +17,10 @@ import {
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
 import {
-  STATIC_CHAINS,
-  STATIC_NATIVE_TOKENS,
+  STATIC_CHAINS_MAINNET,
+  STATIC_NATIVE_TOKENS_MAINNET,
+  STATIC_CHAINS_TESTNET,
+  STATIC_NATIVE_TOKENS_TESTNET,
   ZerionService,
 } from "./services/zerion";
 import { DEFAULT_FUNGIBLE_OPTIONS } from "./config";
@@ -37,7 +39,7 @@ export class ZerionAPI implements iZerionAPI {
 
   async getChains(useStatic?: boolean): Promise<ChainData[]> {
     if (useStatic) {
-      return STATIC_CHAINS;
+      return this.isTestnet ? STATIC_CHAINS_TESTNET : STATIC_CHAINS_MAINNET;
     }
     const { data } =
       await this.service.fetchFromZerion<GetChainsResponse>("/chains/");
@@ -110,7 +112,12 @@ export class ZerionAPI implements iZerionAPI {
   ): Promise<Record<string, FungibleTokenData>> {
     if (useStatic)
       return Object.fromEntries(
-        chains.map((chain) => [chain.id, STATIC_NATIVE_TOKENS[chain.id]])
+        chains.map((chain) => [
+          chain.id,
+          (this.isTestnet
+            ? STATIC_NATIVE_TOKENS_TESTNET
+            : STATIC_NATIVE_TOKENS_MAINNET)[chain.id],
+        ])
       );
 
     const nativeTokenResponses = await Promise.all(
