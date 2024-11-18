@@ -1,0 +1,430 @@
+{
+  "ethereum-sepolia": {
+    "type": "fungibles",
+    "id": "eth",
+    "attributes": {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "description": null,
+      "icon": {
+        "url": "https://cdn.zerion.io/eth.png"
+      },
+      "flags": {
+        "verified": false
+      },
+      "external_links": [],
+      "implementations": [
+        {
+          "chain_id": "ethereum-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "unichain-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero-sepolia-v2",
+          "address": null,
+          "decimals": 18
+        }
+      ],
+      "market_data": {
+        "total_supply": null,
+        "circulating_supply": null,
+        "market_cap": null,
+        "fully_diluted_valuation": null,
+        "price": null,
+        "changes": {
+          "percent_1d": null,
+          "percent_30d": null,
+          "percent_90d": null,
+          "percent_365d": null
+        }
+      }
+    },
+    "relationships": {
+      "chart_day": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/day?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-day"
+        }
+      },
+      "chart_hour": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/hour?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-hour"
+        }
+      },
+      "chart_max": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/max?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-max"
+        }
+      },
+      "chart_month": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/month?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-month"
+        }
+      },
+      "chart_week": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/week?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-week"
+        }
+      },
+      "chart_year": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/year?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-year"
+        }
+      }
+    }
+  },
+  "unichain-sepolia": {
+    "type": "fungibles",
+    "id": "eth",
+    "attributes": {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "description": null,
+      "icon": {
+        "url": "https://cdn.zerion.io/eth.png"
+      },
+      "flags": {
+        "verified": false
+      },
+      "external_links": [],
+      "implementations": [
+        {
+          "chain_id": "ethereum-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "unichain-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero-sepolia-v2",
+          "address": null,
+          "decimals": 18
+        }
+      ],
+      "market_data": {
+        "total_supply": null,
+        "circulating_supply": null,
+        "market_cap": null,
+        "fully_diluted_valuation": null,
+        "price": null,
+        "changes": {
+          "percent_1d": null,
+          "percent_30d": null,
+          "percent_90d": null,
+          "percent_365d": null
+        }
+      }
+    },
+    "relationships": {
+      "chart_day": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/day?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-day"
+        }
+      },
+      "chart_hour": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/hour?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-hour"
+        }
+      },
+      "chart_max": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/max?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-max"
+        }
+      },
+      "chart_month": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/month?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-month"
+        }
+      },
+      "chart_week": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/week?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-week"
+        }
+      },
+      "chart_year": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/year?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-year"
+        }
+      }
+    }
+  },
+  "zero-sepolia": {
+    "type": "fungibles",
+    "id": "eth",
+    "attributes": {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "description": null,
+      "icon": {
+        "url": "https://cdn.zerion.io/eth.png"
+      },
+      "flags": {
+        "verified": false
+      },
+      "external_links": [],
+      "implementations": [
+        {
+          "chain_id": "ethereum-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "unichain-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero-sepolia-v2",
+          "address": null,
+          "decimals": 18
+        }
+      ],
+      "market_data": {
+        "total_supply": null,
+        "circulating_supply": null,
+        "market_cap": null,
+        "fully_diluted_valuation": null,
+        "price": null,
+        "changes": {
+          "percent_1d": null,
+          "percent_30d": null,
+          "percent_90d": null,
+          "percent_365d": null
+        }
+      }
+    },
+    "relationships": {
+      "chart_day": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/day?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-day"
+        }
+      },
+      "chart_hour": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/hour?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-hour"
+        }
+      },
+      "chart_max": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/max?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-max"
+        }
+      },
+      "chart_month": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/month?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-month"
+        }
+      },
+      "chart_week": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/week?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-week"
+        }
+      },
+      "chart_year": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/year?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-year"
+        }
+      }
+    }
+  },
+  "zero-sepolia-v2": {
+    "type": "fungibles",
+    "id": "eth",
+    "attributes": {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "description": null,
+      "icon": {
+        "url": "https://cdn.zerion.io/eth.png"
+      },
+      "flags": {
+        "verified": false
+      },
+      "external_links": [],
+      "implementations": [
+        {
+          "chain_id": "ethereum-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "unichain-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero-sepolia",
+          "address": null,
+          "decimals": 18
+        },
+        {
+          "chain_id": "zero-sepolia-v2",
+          "address": null,
+          "decimals": 18
+        }
+      ],
+      "market_data": {
+        "total_supply": null,
+        "circulating_supply": null,
+        "market_cap": null,
+        "fully_diluted_valuation": null,
+        "price": null,
+        "changes": {
+          "percent_1d": null,
+          "percent_30d": null,
+          "percent_90d": null,
+          "percent_365d": null
+        }
+      }
+    },
+    "relationships": {
+      "chart_day": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/day?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-day"
+        }
+      },
+      "chart_hour": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/hour?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-hour"
+        }
+      },
+      "chart_max": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/max?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-max"
+        }
+      },
+      "chart_month": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/month?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-month"
+        }
+      },
+      "chart_week": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/week?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-week"
+        }
+      },
+      "chart_year": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth/charts/year?currency=usd"
+        },
+        "data": {
+          "type": "fungible_charts",
+          "id": "eth-year"
+        }
+      }
+    }
+  }
+}
