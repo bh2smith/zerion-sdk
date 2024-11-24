@@ -28,18 +28,27 @@ describe("Near Safe Requests", () => {
   it.skip("getFungiblePositions", async () => {
     const zerion = new ZerionAPI(apiKey, false);
     const balances = await zerion.getFungiblePositions(
-      "0x8d99F8b2710e6A3B94d9bf465A98E5273069aCBd"
+      "0x54F08c27e75BeA0cdDdb8aA9D69FD61551B19BbA"
     );
     console.log("Balances", JSON.stringify(balances, null, 2));
   });
 
+  it.skip("fungibles", async () => {
+    const zerion = new ZerionAPI(apiKey, false);
+    const polygonNativeAsset = await zerion.fungibles(
+      "7560001f-9b6d-4115-b14a-6c44c4334ef2"
+    );
+    expect(polygonNativeAsset.attributes.implementations).toEqual([
+      { address: null, chain_id: "polygon", decimals: 18 },
+    ]);
+  });
   it.skip("ui.getUserBalances", async () => {
     const zerion = new ZerionAPI(apiKey, false);
     const balances = await zerion.ui.getUserBalances(
       "0x54F08c27e75BeA0cdDdb8aA9D69FD61551B19BbA",
       {
         options: {
-          supportedChains: [100],
+          supportedChains: [137, 100],
           // showZeroNative: true,
           // hideDust: 0.0001,
         },

@@ -1636,6 +1636,56 @@
   },
   {
     "type": "chains",
+    "id": "world",
+    "attributes": {
+      "external_id": "0x1e0",
+      "name": "World Chain",
+      "icon": {
+        "url": "https://protocol-icons.s3.amazonaws.com/worldchain.png"
+      },
+      "explorer": {
+        "name": "WorldScan",
+        "token_url_format": "https://worldchain-mainnet.explorer.alchemy.com/token/{ADDRESS}",
+        "tx_url_format": "https://worldchain-mainnet.explorer.alchemy.com/tx/{HASH}",
+        "home_url": "https://worldchain-mainnet.explorer.alchemy.com/"
+      },
+      "rpc": {
+        "public_servers_url": [
+          "https://worldchain-mainnet.g.alchemy.com/public"
+        ]
+      },
+      "flags": {
+        "supports_trading": true,
+        "supports_sending": true,
+        "supports_bridge": false
+      }
+    },
+    "relationships": {
+      "native_fungible": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth"
+        },
+        "data": {
+          "type": "fungibles",
+          "id": "eth"
+        }
+      },
+      "wrapped_native_fungible": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        },
+        "data": {
+          "type": "fungibles",
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.zerion.io/v1/chains/world"
+    }
+  },
+  {
+    "type": "chains",
     "id": "tomochain",
     "attributes": {
       "external_id": "0x58",
@@ -1673,6 +1723,56 @@
     },
     "links": {
       "self": "https://api.zerion.io/v1/chains/tomochain"
+    }
+  },
+  {
+    "type": "chains",
+    "id": "zero",
+    "attributes": {
+      "external_id": "0x849ea",
+      "name": "ZERϴ",
+      "icon": {
+        "url": "https://chain-icons.s3.amazonaws.com/chainlist/543210"
+      },
+      "explorer": {
+        "name": "ZERϴ Explorer",
+        "token_url_format": "https://explorer.zero.network/token/{ADDRESS}",
+        "tx_url_format": "https://explorer.zero.network/tx/{HASH}",
+        "home_url": "https://explorer.zero.network"
+      },
+      "rpc": {
+        "public_servers_url": [
+          "https://rpc.zerion.io/v1/zero"
+        ]
+      },
+      "flags": {
+        "supports_trading": true,
+        "supports_sending": true,
+        "supports_bridge": true
+      }
+    },
+    "relationships": {
+      "native_fungible": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/eth"
+        },
+        "data": {
+          "type": "fungibles",
+          "id": "eth"
+        }
+      },
+      "wrapped_native_fungible": {
+        "links": {
+          "related": "https://api.zerion.io/v1/fungibles/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        },
+        "data": {
+          "type": "fungibles",
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.zerion.io/v1/chains/zero"
     }
   },
   {
@@ -1728,123 +1828,23 @@
   },
   {
     "type": "chains",
-    "id": "world",
+    "id": "zklink-nova",
     "attributes": {
-      "external_id": "0x1e0",
-      "name": "World Chain",
+      "external_id": "0xc5cc4",
+      "name": "ZkLink Nova",
       "icon": {
-        "url": "https://protocol-icons.s3.amazonaws.com/worldchain.png"
+        "url": "https://chain-icons.s3.amazonaws.com/zklink.png"
       },
       "explorer": {
-        "name": "WorldScan",
-        "token_url_format": "https://worldchain-mainnet.explorer.alchemy.com/token/{ADDRESS}",
-        "tx_url_format": "https://worldchain-mainnet.explorer.alchemy.com/tx/{HASH}",
-        "home_url": "https://worldchain-mainnet.explorer.alchemy.com/"
+        "name": "zkLink Nova Block Explorer",
+        "token_url_format": "https://explorer.zklink.io/token/{ADDRESS}",
+        "tx_url_format": "https://explorer.zklink.io/tx/{HASH}",
+        "home_url": "https://explorer.zklink.io"
       },
       "rpc": {
         "public_servers_url": [
-          "https://worldchain-mainnet.g.alchemy.com/public"
-        ]
-      },
-      "flags": {
-        "supports_trading": true,
-        "supports_sending": true,
-        "supports_bridge": false
-      }
-    },
-    "relationships": {
-      "native_fungible": {
-        "links": {
-          "related": "https://api.zerion.io/v1/fungibles/eth"
-        },
-        "data": {
-          "type": "fungibles",
-          "id": "eth"
-        }
-      },
-      "wrapped_native_fungible": {
-        "links": {
-          "related": "https://api.zerion.io/v1/fungibles/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-        },
-        "data": {
-          "type": "fungibles",
-          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-        }
-      }
-    },
-    "links": {
-      "self": "https://api.zerion.io/v1/chains/world"
-    }
-  },
-  {
-    "type": "chains",
-    "id": "zero",
-    "attributes": {
-      "external_id": "0x849ea",
-      "name": "ZERϴ",
-      "icon": {
-        "url": "https://chain-icons.s3.amazonaws.com/chainlist/543210"
-      },
-      "explorer": {
-        "name": "ZERϴ Explorer",
-        "token_url_format": "https://explorer.zero.network/token/{ADDRESS}",
-        "tx_url_format": "https://explorer.zero.network/tx/{HASH}",
-        "home_url": "https://explorer.zero.network"
-      },
-      "rpc": {
-        "public_servers_url": [
-          "https://rpc.zerion.io/v1/zero"
-        ]
-      },
-      "flags": {
-        "supports_trading": true,
-        "supports_sending": true,
-        "supports_bridge": true
-      }
-    },
-    "relationships": {
-      "native_fungible": {
-        "links": {
-          "related": "https://api.zerion.io/v1/fungibles/eth"
-        },
-        "data": {
-          "type": "fungibles",
-          "id": "eth"
-        }
-      },
-      "wrapped_native_fungible": {
-        "links": {
-          "related": "https://api.zerion.io/v1/fungibles/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-        },
-        "data": {
-          "type": "fungibles",
-          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-        }
-      }
-    },
-    "links": {
-      "self": "https://api.zerion.io/v1/chains/zero"
-    }
-  },
-  {
-    "type": "chains",
-    "id": "re-al",
-    "attributes": {
-      "external_id": "0x1b254",
-      "name": "re.al",
-      "icon": {
-        "url": "https://chain-icons.s3.us-east-1.amazonaws.com/real.png"
-      },
-      "explorer": {
-        "name": "blockscout",
-        "token_url_format": "https://explorer.re.al/token/{ADDRESS}",
-        "tx_url_format": "https://explorer.re.al/tx/{HASH}",
-        "home_url": "https://explorer.re.al"
-      },
-      "rpc": {
-        "public_servers_url": [
-          "https://real.drpc.org",
-          "wss://real.drpc.org"
+          "https://rpc.zklink.io",
+          "wss://rpc.zklink.io"
         ]
       },
       "flags": {
@@ -1856,16 +1856,16 @@
     "relationships": {
       "native_fungible": {
         "links": {
-          "related": "https://api.zerion.io/v1/fungibles/3b5814a4-7fa3-48e3-b389-638925def2cf"
+          "related": "https://api.zerion.io/v1/fungibles/eth"
         },
         "data": {
           "type": "fungibles",
-          "id": "3b5814a4-7fa3-48e3-b389-638925def2cf"
+          "id": "eth"
         }
       }
     },
     "links": {
-      "self": "https://api.zerion.io/v1/chains/re-al"
+      "self": "https://api.zerion.io/v1/chains/zklink-nova"
     }
   },
   {
@@ -1920,23 +1920,23 @@
   },
   {
     "type": "chains",
-    "id": "zklink-nova",
+    "id": "re-al",
     "attributes": {
-      "external_id": "0xc5cc4",
-      "name": "ZkLink Nova",
+      "external_id": "0x1b254",
+      "name": "re.al",
       "icon": {
-        "url": "https://chain-icons.s3.amazonaws.com/zklink.png"
+        "url": "https://chain-icons.s3.us-east-1.amazonaws.com/real.png"
       },
       "explorer": {
-        "name": "zkLink Nova Block Explorer",
-        "token_url_format": "https://explorer.zklink.io/token/{ADDRESS}",
-        "tx_url_format": "https://explorer.zklink.io/tx/{HASH}",
-        "home_url": "https://explorer.zklink.io"
+        "name": "blockscout",
+        "token_url_format": "https://explorer.re.al/token/{ADDRESS}",
+        "tx_url_format": "https://explorer.re.al/tx/{HASH}",
+        "home_url": "https://explorer.re.al"
       },
       "rpc": {
         "public_servers_url": [
-          "https://rpc.zklink.io",
-          "wss://rpc.zklink.io"
+          "https://real.drpc.org",
+          "wss://real.drpc.org"
         ]
       },
       "flags": {
@@ -1948,16 +1948,16 @@
     "relationships": {
       "native_fungible": {
         "links": {
-          "related": "https://api.zerion.io/v1/fungibles/eth"
+          "related": "https://api.zerion.io/v1/fungibles/3b5814a4-7fa3-48e3-b389-638925def2cf"
         },
         "data": {
           "type": "fungibles",
-          "id": "eth"
+          "id": "3b5814a4-7fa3-48e3-b389-638925def2cf"
         }
       }
     },
     "links": {
-      "self": "https://api.zerion.io/v1/chains/zklink-nova"
+      "self": "https://api.zerion.io/v1/chains/re-al"
     }
   }
 ]
