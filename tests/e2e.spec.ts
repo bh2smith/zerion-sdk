@@ -33,7 +33,7 @@ describe("Near Safe Requests", () => {
     console.log("Balances", JSON.stringify(balances, null, 2));
   });
 
-  it.skip("fungibles", async () => {
+  it.only("fungibles", async () => {
     const zerion = new ZerionAPI(apiKey, false);
     const polygonNativeAsset = await zerion.fungibles(
       "7560001f-9b6d-4115-b14a-6c44c4334ef2"
@@ -47,8 +47,9 @@ describe("Near Safe Requests", () => {
     const balances = await zerion.ui.getUserBalances(
       "0x54F08c27e75BeA0cdDdb8aA9D69FD61551B19BbA",
       {
+        useStatic: true,
         options: {
-          supportedChains: [137, 100],
+          supportedChains: [137],
           // showZeroNative: true,
           // hideDust: 0.0001,
         },
