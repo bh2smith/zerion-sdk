@@ -9,3 +9,5 @@ export const DEFAULT_FUNGIBLE_OPTIONS: FungibleOptions = {
   filterTrash: "only_non_trash",
   sort: "value",
 };
+
+export const POLYGON_NATIVE_ASSET_ID = "7560001f-9b6d-4115-b14a-6c44c4334ef2";
