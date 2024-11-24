@@ -65,6 +65,7 @@ export class ZerionAPI implements iZerionAPI {
       await this.service.fetchFromZerion<FungiblePositionsResponse>(
         `/wallets/${walletAddress}/positions/?filter[positions]=${filterPositions}&currency=${currency}&filter[trash]=${filterTrash}&sort=${sort}`
       );
+
     return data;
   }
 
@@ -72,6 +73,18 @@ export class ZerionAPI implements iZerionAPI {
     const { data } = await this.service.fetchFromZerion<FungibleResponse>(
       `/fungibles/${id}`
     );
+    if (data.id === "7560001f-9b6d-4115-b14a-6c44c4334ef2") {
+      // Skip Recognition of MRC20 Token Contract:
+      // https://polygonscan.com/address/0x0000000000000000000000000000000000001010
+      // This token has a payable transfer function and messes shit up.
+      data.attributes.implementations = [
+        {
+          chain_id: "polygon",
+          address: null,
+          decimals: 18,
+        },
+      ];
+    }
     return data;
   }
 
