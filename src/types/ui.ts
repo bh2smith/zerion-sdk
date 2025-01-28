@@ -31,7 +31,7 @@ export type UserNft = {
   chain: string | null;
 };
 
-export type ChainIcons = { [key: string]: string };
+export type ChainIcons = { [key: number]: string };
 
 export type UserToken = {
   chain: UserTokenChain;
