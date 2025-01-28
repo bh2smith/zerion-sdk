@@ -348,9 +348,9 @@ describe("Near Safe Requests", () => {
     expect(uiBalances.chainsIcons).toStrictEqual({
       // Arbitrum: "https://chain-icons.s3.amazonaws.com/arbitrum.png",
       // Base: "https://chain-icons.s3.amazonaws.com/chainlist/8453",
-      Ethereum: "https://chain-icons.s3.amazonaws.com/ethereum.png",
+      1: "https://chain-icons.s3.amazonaws.com/ethereum.png",
       // "Gnosis Chain": "https://chain-icons.s3.amazonaws.com/xdai.png",
-      Optimism: "https://chain-icons.s3.amazonaws.com/optimism.png",
+      10: "https://chain-icons.s3.amazonaws.com/optimism.png",
       // Polygon: "https://chain-icons.s3.amazonaws.com/polygon.png",
     });
     expect(uiBalances.tokens).toStrictEqual([
@@ -402,9 +402,9 @@ describe("NFT Transformations", () => {
     expect(userNftResponse.chainsIcons).toStrictEqual({
       // Arbitrum: "https://chain-icons.s3.amazonaws.com/arbitrum.png",
       // Base: "https://chain-icons.s3.amazonaws.com/chainlist/8453",
-      Ethereum: "https://chain-icons.s3.amazonaws.com/ethereum.png",
+      1: "https://chain-icons.s3.amazonaws.com/ethereum.png",
       // "Gnosis Chain": "https://chain-icons.s3.amazonaws.com/xdai.png",
-      Optimism: "https://chain-icons.s3.amazonaws.com/optimism.png",
+      10: "https://chain-icons.s3.amazonaws.com/optimism.png",
       // Polygon: "https://chain-icons.s3.amazonaws.com/polygon.png",
     });
 

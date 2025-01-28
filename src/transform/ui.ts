@@ -67,7 +67,7 @@ export function transformPositionDataToUserDashboardResponse(
         return null;
       }
       chainsWithPositions.add(chain.zerionId);
-      chainsIcons[chain.name] = chain.icon!;
+      chainsIcons[chain.numberId] = chain.icon!;
       chainSet.add(chain.name);
 
       // Update total USD balance
@@ -122,7 +122,7 @@ export function transformPositionDataToUserDashboardResponse(
       const chain = chainMap.get(chainId);
       if (!chain || chainsWithPositions.has(chainId)) continue;
 
-      chainsIcons[chain.name] = chain.icon!;
+      chainsIcons[chain.numberId] = chain.icon!;
       chainSet.add(chain.name);
 
       tokens.push({
@@ -191,7 +191,7 @@ export function transformNftDataToUserNftResponse(
 
     const chain = chainsMap.get(nft.relationships.chain.data.id)!;
     chainsSet.add(chain.name);
-    chainsIcons[chain.name] = chain.icon;
+    chainsIcons[chain.numericId] = chain.icon;
 
     return {
       nft_contract_id: nft.attributes.nft_info.contract_address,
