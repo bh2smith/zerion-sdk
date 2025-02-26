@@ -45,7 +45,7 @@ export interface UserTokenChain {
   chainIcon?: string;
 }
 export interface UserTokenBalance {
-  balance: number;
+  balance: string;
   usdBalance: number;
   price?: number;
 }

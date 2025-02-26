@@ -88,7 +88,7 @@ export function transformPositionDataToUserDashboardResponse(
           ...(chainIcon ? { chainIcon } : {}),
         },
         balances: {
-          balance: attributes.quantity.float,
+          balance: attributes.quantity.numeric,
           // Testnet tokens are valueless we assign a fake value of 1.
           usdBalance: isTestnet
             ? attributes.quantity.float
@@ -132,7 +132,7 @@ export function transformPositionDataToUserDashboardResponse(
           ...(chain.icon ? { chainIcon: chain.icon } : {}),
         },
         balances: {
-          balance: 0,
+          balance: "0",
           usdBalance: 0,
           price: nativeToken.attributes.market_data?.price || 0,
         },
