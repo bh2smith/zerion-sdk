@@ -361,7 +361,7 @@ describe("Near Safe Requests", () => {
           chainIcon: "https://chain-icons.s3.amazonaws.com/optimism.png",
         },
         balances: {
-          balance: 2.5246051527348325,
+          balance: 2.524605152734832372,
           usdBalance: 6667.835653094075,
           price: 2641.14,
         },
