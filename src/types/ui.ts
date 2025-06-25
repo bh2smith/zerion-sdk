@@ -66,6 +66,7 @@ export interface UserBalanceOptions {
 }
 
 export interface TokenBalance {
+  chainId?: number;
   tokenAddress: string | null; // null for native token
   token: {
     name: string;

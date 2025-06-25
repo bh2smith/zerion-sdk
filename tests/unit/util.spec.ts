@@ -66,12 +66,14 @@ describe("zerionToTokenBalance", () => {
       },
       chain: {
         chainName: "poop",
+        chainId: 123,
       },
     };
 
     const result = zerionToTokenBalance(mockUserToken);
 
     expect(result).toEqual({
+      chainId: 123,
       tokenAddress: "0x1234",
       token: {
         name: "Test Token",

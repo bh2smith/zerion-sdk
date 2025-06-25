@@ -56,7 +56,9 @@ export function scientificToDecimal(num: number): string {
 
 export function zerionToTokenBalance(userToken: UserToken): TokenBalance {
   const { meta, balances } = userToken;
+  const chainId = userToken.chain.chainId;
   return {
+    ...(chainId ? {chainId}: {}),
     tokenAddress: meta.contractAddress || null,
     token: {
       name: meta.name,
