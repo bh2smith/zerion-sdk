@@ -64,3 +64,16 @@ export interface UserBalanceOptions {
   // USD value to hide as dust.
   hideDust?: number;
 }
+
+export interface TokenBalance {
+  tokenAddress: string | null; // null for native token
+  token: {
+    name: string;
+    symbol: string;
+    decimals: number;
+    logoUri: string;
+  } | null;
+  balance: string;
+  fiatBalance: string;
+  fiatConversion: string;
+}
