@@ -336,7 +336,7 @@ const nftsResponse: NFTPosition[] = [
   },
 ];
 
-describe("Near Safe Requests", () => {
+describe("UI Data", () => {
   it("gets Chains", async () => {
     const uiBalances = transformPositionDataToUserDashboardResponse(
       positionsResponse,
