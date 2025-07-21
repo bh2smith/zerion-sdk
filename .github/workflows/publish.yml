@@ -26,6 +26,11 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/}
           npm version $VERSION --no-git-tag-version
 
+      - name: Configure npm auth
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish
         run: npm publish --access public
         env:
