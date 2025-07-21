@@ -7,19 +7,33 @@ on:
     branches: [main]
 
 jobs:
-  types:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
         with:
-          node-version: "20"
+          path: |
+            ~/.bun/install/cache
+            node_modules
+            packages/*/node_modules
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
 
-      - name: Install, Lint & Build
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Lint & Build
         run: |
-          yarn 
-          yarn lint
-          yarn build
-          yarn test unit
+          bun lint
+          bun run test
+          bun run build
