@@ -33,7 +33,7 @@ describe("Near Safe Requests", () => {
     console.log("Balances", JSON.stringify(balances, null, 2));
   });
 
-  it.only("fungibles", async () => {
+  it.skip("fungibles", async () => {
     const zerion = new ZerionAPI(apiKey, false);
     const polygonNativeAsset = await zerion.fungibles(
       "7560001f-9b6d-4115-b14a-6c44c4334ef2"
@@ -42,6 +42,7 @@ describe("Near Safe Requests", () => {
       { address: null, chain_id: "polygon", decimals: 18 },
     ]);
   });
+
   it.skip("ui.getUserBalances", async () => {
     const zerion = new ZerionAPI(apiKey, false);
     const balances = await zerion.ui.getUserBalances(
