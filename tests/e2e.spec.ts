@@ -22,6 +22,16 @@ describe.skip("Integration Test", () => {
     }
     return new ZerionAPI(apiKey, testnet);
   }
+
+  it("get token", async () => {
+    const zerion = loadZerion();
+    // DXD on Gnosis.
+    const token = await zerion.getToken({
+      chainId: 100,
+      address: "0xb90d6bec20993be5d72a5ab353343f7a0281f158",
+    });
+    console.log(JSON.stringify(token, null, 2));
+  });
   it("get testnet Chains", async () => {
     const zerion = loadZerion(true);
     const chains = await zerion.getChains();

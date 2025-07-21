@@ -61,3 +61,10 @@ export interface FungibleResponse {
   };
   data: FungibleTokenData;
 }
+
+export interface ListFungiblesResponse {
+  links: {
+    self: string;
+  };
+  data: FungibleTokenData[];
+}
