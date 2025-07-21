@@ -14,6 +14,7 @@ import {
   NFTPosition,
   NFTPositionOptions,
   GetChainsResponse,
+  ListFungiblesResponse,
 } from "./types";
 import { transformPositionDataToUserDashboardResponse } from "./transform/ui";
 import {
@@ -25,6 +26,7 @@ import {
 } from "./services/zerion";
 import { DEFAULT_FUNGIBLE_OPTIONS, POLYGON_NATIVE_ASSET_ID } from "./config";
 import { buildQueryString, polygonNativeAssetImplementation } from "./util";
+import { Address } from "viem";
 
 export class ZerionAPI implements iZerionAPI {
   service: ZerionService;
@@ -72,6 +74,21 @@ export class ZerionAPI implements iZerionAPI {
           polygonNativeAssetImplementation();
       }
     });
+    return data;
+  }
+
+  // https://developers.zerion.io/reference/listfungibles
+  async listFungibles(
+    address: string,
+    chain?: string
+  ): Promise<FungibleTokenData[]> {
+    let queryParams = `filter[search_query]=${address}`;
+    if (chain) {
+      queryParams += `&filter[implementation_chain_id]=${chain}`;
+    }
+    const { data } = await this.service.fetchFromZerion<ListFungiblesResponse>(
+      `/fungibles?currency=usd&page[size]=100&${queryParams}&sort=-market_data.market_cap`
+    );
     return data;
   }
 
@@ -143,6 +160,32 @@ export class ZerionAPI implements iZerionAPI {
     );
 
     return nativeTokens;
+  }
+
+  async getChainById(chainId: number): Promise<ChainData | undefined> {
+    const chains = await this.getChains(true);
+    // It is super inneficient to be filtering this every single time.
+    const chain = chains.find(
+      (c) => Number(c.attributes.external_id) === chainId
+    );
+    if (!chain) {
+      console.error(`Chain with ID ${chainId} not found...`);
+    }
+    return chain;
+  }
+
+  async getToken(args: {
+    chainId: number;
+    address: Address;
+  }): Promise<FungibleTokenData> {
+    const { chainId, address } = args;
+    const chain = await this.getChainById(chainId);
+    const fungibles = await this.listFungibles(address, chain?.id);
+    // console.log(`Found ${fungibles.length} tokens for ${chainId}:${address}`);
+    if (fungibles.length === 0) {
+      console.error(`No token found for ${chainId}:${address}`);
+    }
+    return fungibles[0];
   }
 }
 
