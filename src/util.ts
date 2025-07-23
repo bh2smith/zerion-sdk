@@ -1,5 +1,5 @@
 import { FungibleImplementation, TokenBalance, UserToken } from "./types";
-import { parseUnits } from "viem";
+import { getAddress, parseUnits } from "viem";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function buildQueryString(params: Record<string, any>): string {
@@ -80,4 +80,13 @@ export function zerionToTokenBalances(userTokens: UserToken[]): TokenBalance[] {
   return userTokens
     .filter((token) => !token.meta.isSpam) // Filter out spam tokens
     .map(zerionToTokenBalance);
+}
+
+// CoW (and many other Dex Protocols use this to represent native asset).
+export const NATIVE_ASSET = getAddress(
+  "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+);
+
+export function isNativeAsset(token: string): boolean {
+  return token.toLowerCase() === NATIVE_ASSET.toLowerCase();
 }

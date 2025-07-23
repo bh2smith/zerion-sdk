@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 
-import { ZerionAPI } from "../src";
+import { NATIVE_ASSET, ZerionAPI } from "../src";
 
 describe("Invalid Key", () => {
   it("fails with invalid API key", async () => {
@@ -29,6 +29,16 @@ describe.skip("Integration Test", () => {
     const token = await zerion.getToken({
       chainId: 100,
       address: "0xb90d6bec20993be5d72a5ab353343f7a0281f158",
+    });
+    console.log(JSON.stringify(token, null, 2));
+  });
+
+  it("get native asset token", async () => {
+    const zerion = loadZerion();
+    // DXD on Gnosis.
+    const token = await zerion.getToken({
+      chainId: 100,
+      address: NATIVE_ASSET,
     });
     console.log(JSON.stringify(token, null, 2));
   });

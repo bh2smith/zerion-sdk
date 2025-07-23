@@ -25,7 +25,11 @@ import {
   ZerionService,
 } from "./services/zerion";
 import { DEFAULT_FUNGIBLE_OPTIONS, POLYGON_NATIVE_ASSET_ID } from "./config";
-import { buildQueryString, polygonNativeAssetImplementation } from "./util";
+import {
+  buildQueryString,
+  isNativeAsset,
+  polygonNativeAssetImplementation,
+} from "./util";
 import { Address } from "viem";
 
 export class ZerionAPI implements iZerionAPI {
@@ -180,6 +184,12 @@ export class ZerionAPI implements iZerionAPI {
   }): Promise<FungibleTokenData> {
     const { chainId, address } = args;
     const chain = await this.getChainById(chainId);
+    if (isNativeAsset(address)) {
+      if (!chain) {
+        throw new Error(`No Chain for for chainId=${chainId}`);
+      }
+      return this.fungibles(chain.relationships.native_fungible.data.id);
+    }
     const fungibles = await this.listFungibles(address, chain?.id);
     // console.log(`Found ${fungibles.length} tokens for ${chainId}:${address}`);
     if (fungibles.length === 0) {
