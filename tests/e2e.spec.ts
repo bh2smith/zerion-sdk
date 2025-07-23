@@ -40,7 +40,7 @@ describe.skip("Integration Test", () => {
       chainId: 100,
       address: NATIVE_ASSET,
     });
-    console.log(JSON.stringify(token, null, 2));
+    expect(token.attributes.name).toBe("xDAI")
   });
   it("get testnet Chains", async () => {
     const zerion = loadZerion(true);
