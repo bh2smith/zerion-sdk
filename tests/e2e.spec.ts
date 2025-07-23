@@ -40,7 +40,7 @@ describe.skip("Integration Test", () => {
       chainId: 100,
       address: NATIVE_ASSET,
     });
-    expect(token.attributes.name).toBe("xDAI")
+    expect(token.attributes.name).toBe("xDAI");
   });
   it("get testnet Chains", async () => {
     const zerion = loadZerion(true);
