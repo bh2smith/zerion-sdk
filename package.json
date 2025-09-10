@@ -35,8 +35,8 @@
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.3.1",
-    "@typescript-eslint/eslint-plugin": "^8.42.0",
-    "@typescript-eslint/parser": "^8.42.0",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
     "dotenv": "^17.2.2",
     "eslint": "^9.35.0",
     "prettier": "^3.6.2",
@@ -45,6 +45,6 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "viem": "^2.37.4"
+    "viem": "^2.37.5"
   }
 }
