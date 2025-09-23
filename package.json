@@ -24,27 +24,27 @@
     "dist/**/*"
   ],
   "scripts": {
-    "generate-static-data": "ts-node scripts/generate-static-data.ts",
+    "generate-static-data": "tsx scripts/generate-static-data.ts",
     "build": "rm -fr dist/* && bun build:esm && bun build:cjs",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
-    "dev": "ts-node src/index.ts",
+    "dev": "tsx src/index.ts",
     "lint": "eslint . --ignore-pattern dist/ && prettier --check '{src,examples,tests,scripts}/**/*.ts'",
     "fmt": "prettier --write '{src,examples,tests,scripts}/**/*.ts' && eslint . --ignore-pattern dist/ --fix"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.4.0",
-    "@typescript-eslint/eslint-plugin": "^8.43.0",
-    "@typescript-eslint/parser": "^8.43.0",
+    "@types/node": "^24.5.2",
+    "@typescript-eslint/eslint-plugin": "^8.44.1",
+    "@typescript-eslint/parser": "^8.44.1",
     "dotenv": "^17.2.2",
-    "eslint": "^9.35.0",
+    "eslint": "^9.36.0",
     "prettier": "^3.6.2",
-    "ts-jest": "^29.4.1",
-    "ts-node": "^10.9.2",
+    "ts-jest": "^29.4.4",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "viem": "^2.37.6"
+    "viem": "^2.37.8"
   }
 }
