@@ -34,17 +34,17 @@
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.5.2",
-    "@typescript-eslint/eslint-plugin": "^8.44.1",
-    "@typescript-eslint/parser": "^8.44.1",
-    "dotenv": "^17.2.2",
-    "eslint": "^9.36.0",
+    "@types/node": "^24.7.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
+    "dotenv": "^17.2.3",
+    "eslint": "^9.37.0",
     "prettier": "^3.6.2",
-    "ts-jest": "^29.4.4",
-    "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "ts-jest": "^29.4.5",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "viem": "^2.37.8"
+    "viem": "^2.38.2"
   }
 }
